@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arthur Dixon Fr CA-34 - The People’s Campaign for Bold Progressive Change">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="The People’s Campaign for Bold Progressive Change">
+  <meta property="og:image" content="https://example.com/images/campaign-logo.png">
+  <meta property="og:url" content="https://www.arthur4congress.com">
+  <meta property="og:type" content="website">
+  <title></title>
+  <link rel="icon" type="image/png" href="https://pbs.twimg.com/media/FGh5_RKUUAAquyk?format=jpg&name=medium">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;s
+      scroll-behavior: smooth;
+    }
+    img {
+    border: 5px solid #FFD700;
+    }
+
+    .logo {
+    border: none;
+    }
+
+    body {
+      background: #f5f6f5;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 80px;
+    }
+
+    body.dark-mode {
+      background: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    [lang="es"], [lang="zh"], [lang="ko"], [lang="ja"], [lang="tl"] {
+      font-family: 'Roboto', 'Noto Sans JP', 'Noto Sans KR', 'Noto Serif SC', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(145deg, #004D40 30%, #2E7D32 70%);
+      color: #fff;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      height: 80px;
+    }
+
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      color: #FFD700;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      transition: transform 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    #language-toggle {
+      background: transparent;
+      color: #FFD700;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    header .logo {
+      max-height: 150px;
+      margin-left: 1rem;
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      white-space: normal;
+      overflow-wrap: break-word;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .hamburger {
+      cursor: pointer;
+      margin-right: 1rem;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #FFD700;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    nav {
+      position: fixed;
+      top: 80px;
+      width: 100%;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: none;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      background: #004D40;
+      padding: 1rem;
+    }
+
+    .dark-mode nav ul {
+      background: #1a3c34;
+    }
+
+    nav ul.show {
+      display: flex;
+    }
+
+    nav a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header .logo {
+        max-height: 150px;
+      }
+    }
+
+    #hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0,77,64,0.8), rgba(46,125,50,0.8));
+    }
+
+    #hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.9;
+      filter: brightness(0.8);
+    }
+
+    #hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5rem;
+      margin-top: 20px; /* Added to push text below the header */
+      margin-bottom: 1.5rem; /* Increased from 1rem for better spacing */
+      z-index: 1;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease-out;
+      white-space: normal;
+      overflow-wrap: break-word;
+      line-height: 1.2; /* Added for better readability */
+    }
+
+    #hero p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 2.5rem; /* Increased from 2rem for better spacing */
+      z-index: 1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      animation: fadeInUp 1.2s ease-out;
+      white-space: normal;
+      overflow-wrap: break-word;
+      line-height: 1.4; /* Added for better readability */
+    }
+
+    .btn {
+      background: #FFD700;
+      color: #004D40;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      z-index: 1;
+      animation: fadeInUp 1.4s ease-out;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .dark-mode .btn {
+      background: #FFD700;
+      color: #1a3c34;
+    }
+
+    .btn:hover {
+      background: #003366;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .section-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section-animate.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #about {
+      background: #fff;
+      padding: 8rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-mode #about {
+      background: #2a2a2a;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(255,255,255,0) 70%);
+      z-index: 0;
+    }
+
+    #about h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #004D40;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dark-mode #about h2 {
+      color: #FFD700;
+    }
+
+    #about .swiper-container {
+      max-width: 450px;
+      margin: 0 auto 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      border: 5px solid #FFD700;
+      transition: transform 0.3s ease;
+    }
+
+    .swiper-slide img:hover {
+      transform: scale(1.02);
+    }
+
+    #about .swiper-button-prev,
+    #about .swiper-button-next {
+      color: #FFD700;
+    }
+
+    #about p {
+      max-width: 800px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      margin: 0 auto 2rem;
+      color: #333;
+      position: relative;
+      z-index: 1;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode #about p {
+      color: #e0e0e0;
+    }
+
+    #about p span {
+      font-weight: 700;
+      color: #2E7D32;
+    }
+
+    .dark-mode #about p span {
+      color: #FFD700;
+    }
+
+    #about p span.alt {
+      color: #FFD700;
+    }
+
+    #about .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    #platform {
+      background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
+      padding: 8rem 2rem;
+      text-align: center;
+    }
+
+    .dark-mode #platform {
+      background: linear-gradient(to bottom, #333, #222);
+    }
+
+    #platform h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #2E7D32;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode #platform h2 {
+      color: #FFD700;
+    }
+
+    #platform .issues {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #platform .issue {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dark-mode #platform .issue {
+      background: #2a2a2a;
+    }
+
+    #platform .issue:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    #platform .issue i {
+      font-size: 3rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    #platform .issue:hover i {
+      transform: scale(1.1);
+    }
+
+    #platform .issue h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      color: #004D40;
+      margin-bottom: 1rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode #platform .issue h3 {
+      color: #FFD700;
+    }
+
+    #platform .issue p {
+      font-size: 1.1rem;
+      color: #333;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode #platform .issue p {
+      color: #e0e0e0;
+    }
+
+    #events {
+      background: #fff;
+      padding: 8rem 2rem;
+      text-align: center;
+    }
+
+    .dark-mode #events {
+      background: #2a2a2a;
+    }
+
+    #events h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #004D40;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode #events h2 {
+      color: #FFD700;
+    }
+
+    #events .event-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #events .event {
+      background: #f0f0f0;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      text-align: left;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dark-mode #events .event {
+      background: #333;
+    }
+
+    #events .event:hover {
+      background: #e0e0e0;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .dark-mode #events .event:hover {
+      background: #444;
+    }
+
+    #events .event h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      color: #2E7D32;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode #events .event h3 {
+      color: #FFD700;
+    }
+
+    #events .event p {
+      font-size: 1rem;
+      color: #333;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode #events .event p {
+      color: #e0e0e0;
+    }
+
+    #map {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: #f5f6f5;
+    }
+
+    .dark-mode #map {
+      background: #1a1a1a;
+    }
+
+    #map h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #004D40;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode #map h2 {
+      color: #FFD700;
+    }
+
+    .map-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .map-container iframe {
+        height: 300px;
+      }
+    }
+
+    .district-info {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      background: linear-gradient(to bottom, #fff, #d0d0d0);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .dark-mode .district-info {
+      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+    }
+
+    .district-info:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .district-info h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      color: #2E7D32;
+      margin-bottom: 1rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode .district-info h3 {
+      color: #FFD700;
+    }
+
+    .district-info ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+
+    .district-info li {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+      transition: color 0.3s ease;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode .district-info li {
+      color: #e0e0e0;
+    }
+
+    .district-info li:before {
+      content: '\f3c5';
+      font-family: 'FontAwesome';
+      color: #FFD700;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .district-info li:hover:before {
+      transform: scale(1.1);
+    }
+
+    .district-info .zone-link {
+      color: #004D40;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .dark-mode .district-info .zone-link {
+      color: #FFD700;
+    }
+
+    .district-info .zone-link:hover {
+      color: #FFD700;
+      transform: translateX(5px);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+    }
+
+    .dark-mode .modal-content {
+      background: #2a2a2a;
+    }
+
+    .modal-content h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: #004D40;
+      margin-bottom: 1rem;
+    }
+
+    .dark-mode .modal-content h3 {
+      color: #FFD700;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .modal-content p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .dark-mode .modal-content p {
+      color: #e0e0e0;
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .dark-mode .modal .close {
+      color: #e0e0e0;
+    }
+
+    .modal .close:hover {
+      color: #FFD700;
+    }
+
+    #news {
+      padding: 8rem 2rem;
+      background: #004D40;
+      color: #fff;
+    }
+
+    .dark-mode #news {
+      background: #1a3c34;
+    }
+
+    #news h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #FFD700;
+      text-align: center;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .news-swiper {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .news-swiper .swiper-slide {
+      background: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      color: #333;
+      transition: transform 0.3s ease;
+    }
+
+    .dark-mode .news-swiper .swiper-slide {
+      background: #2a2a2a;
+      color: #e0e0e0;
+    }
+
+    .news-swiper .swiper-slide:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-swiper .date-tag {
+      background: #FFD700;
+      color: #004D40;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .dark-mode .news-swiper .date-tag {
+      color: #1a3c34;
+    }
+
+    .news-swiper .category {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: #2E7D32;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode .news-swiper .category {
+      color: #FFD700;
+    }
+
+    .news-swiper h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      color: #004D40;
+      margin-bottom: 1rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode .news-swiper h3 {
+      color: #FFD700;
+    }
+
+    .news-swiper p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode .news-swiper p {
+      color: #e0e0e0;
+    }
+
+    .news-swiper p span {
+      font-weight: 700;
+      color: #2E7D32;
+    }
+
+    .dark-mode .news-swiper p span {
+      color: #FFD700;
+    }
+
+    .news-swiper .read-more {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .news-swiper .read-more:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .news-swiper .swiper-button-prev,
+    .news-swiper .swiper-button-next {
+      color: #FFD700;
+    }
+
+    #tweets {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: #f5f6f5;
+    }
+
+    .dark-mode #tweets {
+      background: #1a1a1a;
+    }
+
+    #tweets h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #004D40;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode #tweets h2 {
+      color: #FFD700;
+    }
+
+    .tweets-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #gallery {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: #f5f6f5;
+    }
+
+    .dark-mode #gallery {
+      background: #1a1a1a;
+    }
+
+    #gallery h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #004D40;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode #gallery h2 {
+      color: #FFD700;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    #videos {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: #fff;
+    }
+
+    .dark-mode #videos {
+      background: #2a2a2a;
+    }
+
+    #videos h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #004D40;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode #videos h2 {
+      color: #FFD700;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .video-grid iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .video-grid iframe:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    #donate {
+      background: linear-gradient(135deg, #2E7D32 20%, #004D40 80%);
+      color: #fff;
+      padding: 8rem 2rem;
+      text-align: center;
+    }
+
+    .dark-mode #donate {
+      background: linear-gradient(135deg, #1a3c34 20%, #0a2b26 80%);
+    }
+
+    #donate h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    #donate .donate-content {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #donate .donate-text {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+    }
+
+    #donate .donate-text h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    #donate .donate-text p {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    #donate .donate-text .btn {
+      background: #FFD700;
+      color: #004D40;
+    }
+
+    #donate .donate-text .btn:hover {
+      background: #fff;
+      color: #004D40;
+    }
+
+    #donate .donate-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    #donate .donate-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    #donate .donate-image img:hover {
+      transform: scale(1.02);
+    }
+
+    #donate .donate-form {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    #donate .donate-btn {
+      background: #FFD700;
+      color: #004D40;
+      padding: 1rem 2rem;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .dark-mode #donate .donate-btn {
+      color: #1a3c34;
+    }
+
+    #donate .donate-btn:hover {
+      background: #fff;
+      color: #004D40;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    #donate .progress-bar {
+      margin-top: 2rem;
+      background: #fff;
+      border-radius: 5px;
+      height: 25px;
+      width: 80%;
+      max-width: 600px;
+      margin: 2rem auto 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .dark-mode #donate .progress-bar {
+      background: #333;
+    }
+
+    #donate .progress {
+      background: #FFD700;
+      height: 100%;
+      width: 0;
+      border-radius: 5px;
+      transition: width 1s ease;
+    }
+
+    #donate .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #004D40;
+      font-weight: 700;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .dark-mode #donate .progress-text {
+      color: #FFD700;
+    }
+
+    #shop {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: #fff;
+    }
+
+    .dark-mode #shop {
+      background: #2a2a2a;
+    }
+
+    #shop h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      color: #004D40;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+    }
+
+    .dark-mode #shop h2 {
+      color: #FFD700;
+    }
+
+    .shop-swiper {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .shop-swiper .swiper-slide {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .shop-swiper img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .shop-swiper img:hover {
+      transform: scale(1.05);
+    }
+
+    .shop-swiper h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      color: #004D40;
+      margin-bottom: 0.5rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .dark-mode .shop-swiper h3 {
+      color: #FFD700;
+    }
+
+    .shop-swiper p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .dark-mode .shop-swiper p {
+      color: #e0e0e0;
+    }
+
+    .shop-swiper .btn {
+      background: #FFD700;
+      color: #004D40;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+    }
+
+    .dark-mode .shop-swiper .btn {
+      color: #1a3c34;
+    }
+
+    .shop-swiper .btn:hover {
+      background: #003366;
+      color: #fff;
+    }
+
+    .shop-swiper .swiper-button-prev,
+    .shop-swiper .swiper-button-next {
+      color: #FFD700;
+    }
+
+    #join-us {
+      background: #004D40;
+      padding: 8rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .dark-mode #join-us {
+      background: #1a3c34;
+    }
+
+    #join-us h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    #join-us .join-content {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #join-us .join-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    #join-us .join-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    #join-us .join-image img:hover {
+      transform: scale(1.02);
+    }
+
+    #join-us .join-form {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+    }
+
+    #join-us .join-form h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+    }
+
+    #join-us .join-form input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #join-us .join-form .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #join-us .join-form .checkbox input {
+      width: auto;
+    }
+
+    #join-us .join-form .checkbox label {
+      font-size: 0.9rem;
+      color: #fff;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    #join-us .join-form .btn {
+      background: #FFD700;
+      color: #004D40;
+      width: 100%;
+      text-align: center;
+    }
+
+    #join-us .join-form .btn:hover {
+      background: #fff;
+      color: #004D40;
+    }
+
+    footer {
+      background: #004D40;
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .dark-mode footer {
+      background: #1a3c34;
+    }
+
+    footer .socials a {
+      color: #FFD700;
+      font-size: 1.8rem;
+      margin: 0 1.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    footer .socials a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    footer .newsletter {
+      margin-top: 2rem;
+    }
+
+    footer input {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      width: 250px;
+      font-size: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    footer button {
+      padding: 0.75rem 1.5rem;
+      background: #FFD700;
+      color: #004D40;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    footer button:hover {
+      background: #003366;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .disclaimer {
+      margin-top: 2rem;
+      border: 1px solid #fff;
+      padding: 0.5rem 1rem;
+      display: inline-block;
+      border-radius: 5px;
+      transition: border-color 0.3s ease;
+    }
+
+    .dark-mode .disclaimer {
+      border-color: #e0e0e0;
+    }
+
+    .disclaimer p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .floating-donate {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #FFD700;
+      color: #004D40;
+      padding: 0.8rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      z-index: 1001;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .dark-mode .back-to-top {
+      background: #FFD700;
+      color: #1a3c34;
+    }
+
+    .back-to-top:hover {
+      transform: scale(1.1);
+    }
+
+    .chatbot {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1001;
+      background: #FFD700;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .chatbot.active {
+      display: block;
+    }
+
+    .chatbot p {
+      margin-bottom: 1rem;
+      color: #004D40;
+    }
+
+    .chatbot button {
+      background: #004D40;
+      color: #FFD700;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .chatbot {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1001;
+  background: #FFD700;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: none;
+  transition: opacity 0.3s ease;
+  width: 300px; /* Fixed width for larger screens */
+  max-width: 300px; /* Cap the maximum width */
+  box-sizing: border-box; /* Include padding in width */
+  overflow: hidden; /* Prevent content from spilling out */
+}
+
+.chatbot.active {
+  display: block;
+}
+
+.chatbot p {
+  margin-bottom: 1rem;
+  color: #004D40;
+  overflow-wrap: break-word; /* Wrap long words */
+  word-wrap: break-word; /* For older browsers */
+  max-width: 100%; /* Ensure text doesn’t exceed container */
+}
+
+.chatbot img, .chatbot video, .chatbot iframe {
+  max-width: 100%; /* Constrain media to container width */
+  height: auto;
+}
+
+.chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #FFD700;
+  color: #004D40;
+  padding: 0.8rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1002;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .chatbot {
+    width: 90%; /* Responsive width for medium screens */
+    max-width: 300px; /* Maintain cap */
+    left: 5%; /* Center horizontally */
+  }
+
+  .chatbot-toggle {
+    bottom: 10px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbot {
+    padding: 0.5rem; /* Reduce padding for small screens */
+    font-size: 0.9rem; /* Adjust font size */
+    width: 90%; /* Full responsiveness */
+    max-width: 280px; /* Slightly smaller cap */
+  }
+
+  .chatbot-toggle {
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+
+      .floating-donate .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      #about .buttons {
+        flex-direction: column;
+      }
+
+      #donate .donate-content, #join-us .join-content {
+        flex-direction: column;
+      }
+
+      #donate .donate-text, #join-us .join-form {
+        text-align: center;
+      }
+
+      #hero h2 {
+        font-size: 3rem;
+      }
+
+      #hero p {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #hero h2 {
+        font-size: 2rem;
+      }
+
+      #hero p {
+        font-size: 1rem;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2, h3 {
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      line-height: 1.9;
+    }
+
+    @media (max-width: 480px) {
+      .chatbot {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+      }
+      .chatbot button {
+        padding: 0.3rem 0.6rem;
+      }
+      header h1 {
+        font-size: 1.2rem;
+      }
+      .chatbot-toggle {
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <a href="index.html"><img src="images/campaign-logo.png" alt="Arthur Dixon Campaign Logo" class="logo"></a>
+    <h1></h1> 
+    <select id="language-toggle">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="ko">한국어</option>
+      <option value="zh">中文</option>
+      <option value="ja">日本語</option>
+      <option value="tl">Tagalog</option>
+    </select>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#map">District Map</a></li>
+      <li><a href="#news">News & Press</a></li>
+      <li><a href="#tweets">Tweets</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#videos">Speeches & Videos</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#join-us">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero" class="section-animate">
+    <video autoplay muted loop poster="">
+      <source src="https://videos.pexels.com/video-files/8782951/8782951-hd_1920_1080_30fps.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h2 id="hero-title">The People’s Campaign for <span style="color: #FFD700;">Bold Progressive Change</span></h2>
+    <p id="hero-subtitle">Join Arthur Dixon’s <span style="color: #FFD700;">Grassroots Movement</span> for a better <span style="color: #FFD700;">Los Angeles</span></p>
+    <a href="#donate" class="btn" id="hero-donate">Donate Now</a>
+  </section>
+
+  <section id="about" class="section-animate">
+    <h2 id="about-title">Meet Arthur</h2>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/arthur1.jpg" alt="Arthur Dixon at a rally"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <p id="about-text">I’m <span>Arthur Dixon</span>, a <span class="alt">28-year-old organizer</span> who knows the pain of poverty firsthand. Raised by a single mom, I’ve <span class="alt">slept on the street</span>, gone hungry, and fought to survive—experiences that broke my heart but built my resolve. Now, I’m running for Congress in CA-34 to fight for justice, ensuring <span>no one</span> is left behind. I’ll deliver a <span>Universal Basic Income</span> to end poverty, a <span class="alt">Green New Deal</span> for jobs, a beautiful city, and a livable planet, and <span>Guaranteed Housing</span> to keep families secure—because <span class="alt">dignity</span> and <span>opportunity</span> are rights for all.</p>    <div class="buttons">
+      <a href="#platform" class="btn" id="vision-btn">See Our Vision</a>
+      <a href="#donate" class="btn" id="support-btn">Support Our Cause</a>
+      <a href="#join-us" class="btn" id="join-btn">Join Our Fight</a>
+    </div>
+  </section>
+
+  <section id="platform" class="section-animate">
+    <h2 id="platform-title">Our Platform</h2>
+    <div class="issues">
+      <div class="issue">
+        <i class="fas fa-money-bill-wave"></i>
+        <h3 id="ubi-title">Universal Basic Income</h3>
+        <p id="ubi-text">$1,000 monthly for every adult—no strings attached. Groceries without worry, rent on time, and freedom to chase dreams, not just survive.</p>
+      </div>
+      <div class="issue">
+        <i class="fas fa-leaf"></i>
+        <h3 id="green-title">Green New Deal</h3>
+        <p id="green-text">Union jobs in clean energy, transit, and housing—fighting climate change while securing clean air, safe streets, and prosperity for CA-34, with a focus on marginalized communities.</p>
+      </div>
+      <div class="issue">
+        <i class="fas fa-home"></i>
+        <h3 id="housing-title">Housing as a Right</h3>
+        <p id="housing-text">Secure homes with capped rents, tenant protections, and relief to end homelessness—no one should lose their home to corporate greed.</p>
+      </div>
+      <div class="issue">
+        <i class="fas fa-heartbeat"></i>
+        <h3 id="health-title">Healthcare for All</h3>
+        <p id="health-text">Free, universal healthcare—never again choosing between your kid’s medicine and rent. Health is a right, not a luxury, for CA-34.</p>
+      </div>
+      <div class="issue">
+        <i class="fas fa-graduation-cap"></i>
+        <h3 id="edu-title">Education for All</h3>
+        <p id="edu-text">Free K-12 to college—fully funded schools, resources for kids, debt-free community college, and culturally responsive education so all CA-34 students thrive.</p>
+      </div>
+      <div class="issue">
+        <i class="fas fa-balance-scale"></i>
+        <h3 id="justice-title">Justice and Dignity for All</h3>
+        <p id="justice-text">End mass incarceration, abolish ICE, and implement community-led safety programs to rebuild trust. Protect immigrants with citizenship paths—CA-34 is a sanctuary for all.</p>
+      </div>
+      <div class="issue">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h3 id="mental-health-title">Mental Health Access</h3>
+        <p id="mental-health-text">Free mental health care—counseling, crisis support, targeted outreach for veterans, LGBTQ+ residents, and others hit hardest, because no one should struggle alone.</p>
+      </div>
+      <div class="issue">
+        <i class="fas fa-chart-line"></i>
+        <h3 id="economic-mobility-title">Economic Mobility</h3>
+        <p id="economic-mobility-text">Job training, small business support, a $22 minimum wage, and access to capital for Black and Brown entrepreneurs to lift CA-34 families out of poverty.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="section-animate">
+    <h2 id="events-title">Upcoming Events</h2>
+    <div class="event-list">
+      <div class="event">
+        <h3 id="event1-title">Campaign Launch Event in Boyle Heights</h3>
+        <p id="event1-date">June 14th, 2025 | 11:00 AM | Mariachi Plaza</p>
+      </div>
+      <div class="event">
+        <h3 id="event2-title">Canvassing Day in Koreatown, Harvard Heights, & Pico Union</h3>
+        <p id="event2-date">June 15th, 2025 | 10:00 AM | Wilshire & Normandie</p>
+      </div>
+      <div class="event">
+        <h3 id="event3-title">Rally for Rent Relief & Guaranteed Housing</h3>
+        <p id="event3-date">June 16th, 2025 | 6:00 PM | Echo Park</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="map" class="section-animate">
+    <h2 id="map-title">District Map</h2>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d88000.!2d-118.6681755!3d34.0536909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c6b6f9e9c5e5%3A0x939ef308d8e6e2f!2sCalifornia%27s%2034th%20Congressional%20District!5e0!3m2!1sen!2sus!4v1696451234567!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="district-info">
+      <h3 id="district-title">California's 34th Congressional District</h3>
+      <ul>
+        <li><a href="#" class="zone-link" data-zone="pico-union">Pico Union</a></li>
+        <li><a href="#" class="zone-link" data-zone="harvard-heights">Harvard Heights</a></li>
+        <li><a href="#" class="zone-link" data-zone="boyle-heights">Boyle Heights</a></li>
+        <li><a href="#" class="zone-link" data-zone="koreatown">Koreatown</a></li>
+        <li><a href="#" class="zone-link" data-zone="westlake">Westlake</a></li>
+        <li><a href="#" class="zone-link" data-zone="macarthur-park">MacArthur Park</a></li>
+        <li><a href="#" class="zone-link" data-zone="lincoln-heights">Lincoln Heights</a></li>
+        <li><a href="#" class="zone-link" data-zone="el-sereno">El Sereno</a></li>
+        <li><a href="#" class="zone-link" data-zone="eagle-rock">Eagle Rock</a></li>
+        <li><a href="#" class="zone-link" data-zone="glassell-park">Glassell Park</a></li>
+        <li><a href="#" class="zone-link" data-zone="downtown">Downtown</a></li>
+        <li><a href="#" class="zone-link" data-zone="chinatown">Chinatown</a></li>
+        <li><a href="#" class="zone-link" data-zone="solano-canyon">Solano Canyon</a></li>
+        <li><a href="#" class="zone-link" data-zone="little-tokyo">Little Tokyo</a></li>
+        <li><a href="#" class="zone-link" data-zone="cypress-park">Cypress Park</a></li>
+        <li><a href="#" class="zone-link" data-zone="montecito-heights">Montecito Heights</a></li>
+      </ul>
+      <a href="https://www.govtrack.us/congress/members/CA/34" target="_blank" class="btn" id="learn-more-btn">Learn More</a>
+    </div>
+  </section>
+
+  <div id="zone-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">×</span>
+      <h3 id="zone-title"></h3>
+      <img id="zone-image" src="" alt="">
+      <p id="zone-description"></p>
+    </div>
+  </div>
+
+  <section id="news" class="section-animate">
+    <h2 id="news-title">News & Press</h2>
+    <div class="news-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="date-tag" id="news1-date">APR 20 2025</div>
+          <div class="category" id="news1-category">Press Release</div>
+          <h3 id="news1-title">Arthur Dixon Calls for Abolishing ICE</h3>
+          <p id="news1-text"><span>Arthur Dixon</span> stood with CA-34’s immigrants today, demanding ICE’s end. “I’ve seen raids tear families apart—kids crying, parents gone,” he said, voice raw. He shared Maria’s story, a Westlake mom deported after 20 years. “She’s not a criminal; she’s family,” Dixon insisted. His plan: citizenship paths and community shields. “This is about humanity, not fear—I’m fighting to tear ICE down.”</p>
+          <a href="articles/article1.html" class="read-more" id="news1-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="swiper-slide">
+          <div class="date-tag" id="news2-date">APR 22 2025</div>
+          <div class="category" id="news2-category">Press Release</div>
+          <h3 id="news2-title">Arthur Dixon Announces Run for Congress in CA-34</h3>
+          <p id="news2-text"><span>Arthur Dixon</span>, a 28-year-old fighter from CA-34’s streets, launched his congressional bid today. “I’ve slept in cars, felt hunger gnaw—I know what it’s like to be invisible,” he said, eyes fierce. Raised by a single mom, he’s pushing <span>Universal Basic Income</span>, a <span>Green New Deal</span>, and <span>guaranteed housing</span>. “This isn’t politics; it’s survival. I’m here to build a district where we all rise.”</p>
+          <a href="articles/article2.html" class="read-more" id="news2-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="swiper-slide">
+          <div class="date-tag" id="news3-date">APR 25 2025</div>
+          <div class="category" id="news3-category">Press Release</div>
+          <h3 id="news3-title">Arthur Dixon Launches UBI Pilot Program for CA-34</h3>
+          <p id="news3-text"><span>Arthur Dixon</span> unveiled a bold move today: <span>$1,000/month</span> for a CA-34 family per zone. “I’ve been broke, desperate—this is dignity, not charity,” he said. The Garcias from Boyle Heights, evicted thrice, now have hope. With 20% of CA-34 in poverty, Dixon’s planning a <span>1,000-family UBI pilot</span>. “It’s a lifeline I’ll fight for,” he vowed.</p>
+          <a href="articles/article3.html" class="read-more" id="news3-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="swiper-slide">
+          <div class="date-tag" id="news4-date">APR 28 2025</div>
+          <div class="category" id="news4-category">Press Release</div>
+          <h3 id="news4-title">Arthur Dixon Pushes for Guaranteed Housing</h3>
+          <p id="news4-text"><span>Arthur Dixon</span> rallied for CA-34’s renters today, where <span>40% bleed half their pay</span> on rent. “I’ve been homeless, scared—no one should live that,” he said. His fight: <span>rent caps</span>, <span>tenant rights</span>, and <span>guaranteed housing</span>. In Pico Union, evictions soar—Dixon’s felt it. “We’re done losing homes to greed,” he declared. “I’m here for people, not profits.”</p>
+          <a href="articles/article4.html" class="read-more" id="news4-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="swiper-slide">
+          <div class="date-tag" id="news5-date">MAY 1 2025</div>
+          <div class="category" id="news5-category">Press Release</div>
+          <h3 id="news5-title">Arthur Dixon Champions Healthcare for All</h3>
+          <p id="news5-text"><span>Arthur Dixon</span> pushed for <span>universal healthcare</span> today, shaped by his own scars. “Medical debt crushed me—I’ve skipped meals for pills,” he admitted. He told of Jose, a Lincoln Heights dad who delayed cancer care over costs. “No one should die because they’re poor,” Dixon said fiercely. His plan: free care for all. “This is my fight—healthcare’s a right, period.”</p>
+          <a href="articles/article5.html" class="read-more" id="news5-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="swiper-slide">
+          <div class="date-tag" id="news6-date">MAY 3 2025</div>
+          <div class="category" id="news6-category">Press Release</div>
+          <h3 id="news6-title">Arthur Dixon Fights for Green New Deal</h3>
+          <p id="news6-text"><span>Arthur Dixon</span> took on City Hall today, demanding the mayor stop cuts to LA’s climate justice programs. “After the fires, the smoke choking us, we can’t let the LAPD’s $6 million raise trump our planet,” he argued before the council. He’s championing the <span>Green New Deal</span> for clean energy jobs and public transit. “I’ve seen Koreatown’s solar co-ops work,” Dixon said. “This is about our survival—clean air, not budget games.”</p>
+          <a href="articles/article6.html" class="read-more" id="news6-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="swiper-slide">
+          <div class="date-tag" id="news7-date">MAY 5 2025</div>
+          <div class="category" id="news7-category">Press Release</div>
+          <h3 id="news7-title">Arthur Dixon Champions Education for All</h3>
+          <p id="news7-text">With CA-34 schools starved for cash, <span>Arthur Dixon</span> unveiled his <span>free education</span> plan today—K-12 through community college. “Kids need a real shot,” he said. “Education breaks poverty’s grip.” He’s pushing debt relief and full funding, shaped by his own college hustle. El Sereno’s packed classrooms hit him hard. “Our students can’t wait another day,” Dixon pressed. “This is their future—we’ve got to act.”</p>
+          <a href="articles/article7.html" class="read-more" id="news7-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Swiper Navigation and Pagination -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  
+  <!-- Swiper Initialization Script -->
+  <script>
+    var newsSwiper = new Swiper('.news-swiper', {
+      loop: true,
+      pagination: {
+        el: '.news-swiper .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.news-swiper .swiper-button-next',
+        prevEl: '.news-swiper .swiper-button-prev',
+      },
+      autoplay: {
+        delay: 10000, // 10 seconds per slide
+        disableOnInteraction: false, // Keeps autoplay running after interaction
+      },
+    });
+  </script>
+
+  <section id="gallery" class="section-animate">
+    <h2 id="gallery-title">Gallery</h2>
+    <div class="gallery-grid">
+      <img src="images/gallery1.jpg" alt="Campaign event 1">
+      <img src="images/gallery2.jpg" alt="Campaign event 2">
+      <img src="images/gallery3.jpg" alt="Campaign event 3">
+      <img src="images/gallery4.jpg" alt="Campaign event 4">
+      <img src="images/gallery5.jpg" alt="Campaign event 5">
+      <img src="images/gallery6.jpg" alt="Campaign event 6">
+
+    </div>
+  </section>
+
+  <section id="videos" class="section-animate">
+    <h2 id="videos-title">Speeches & Videos</h2>
+    <div class="video-grid">
+      <iframe title="Arthur Dixon Speech 1" src="https://www.youtube.com/embed/kl39KHS07Xc" frameborder="0" allowfullscreen></iframe>
+      <iframe title="Arthur Dixon Speech 2" src="https://www.youtube.com/embed/GxIDJWCbk6I?rel=0&start=59" frameborder="0" allowfullscreen></iframe>
+      <iframe title="Arthur Dixon Speech 3" src="https://www.youtube.com/embed/0Flsg_mzG-M?rel=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="donate" class="section-animate">
+    <h2 id="donate-title">Support the Movement</h2>
+    <div class="donate-content">
+      <div class="donate-text">
+        <h3 id="donate-text-h3">Help Arthur Fight for CA-34</h3>
+        <p id="donate-text-p">
+          Arthur Dixon knows the pain of CA-34 because he’s lived it—raised by a single mom, sleeping on the street, scraping by. Now, he’s running for Congress to fight for us, not corporate interests. With your support, we can end poverty with Universal Basic Income, tackle climate change with a Green New Deal, and guarantee housing for every family. This campaign runs on people power—no corporate PAC money here. Every dollar you give builds a future where no one’s left behind. Donate now.
+        </p>
+        <a href="#about" class="btn" id="learn-more-donate">Learn More</a>
+      </div>
+    </div>
+      <div class="donate-image">
+        <img src="images/arthur-donate.jpg" alt="Arthur Dixon">
+      </div>
+    </div>
+    <p style="margin: 2rem 0;" id="support-text">Support our work? Consider making a donation!</p>
+    <div class="donate-form">
+      <button class="donate-btn" onclick="window.open('https://secure.actblue.com/donate/arthur4congress', '_blank')">$5</button>
+      <button class="donate-btn" onclick="window.open('https://secure.actblue.com/donate/arthur4congress', '_blank')">$34</button>
+      <button class="donate-btn" onclick="window.open('https://secure.actblue.com/donate/arthur4congress', '_blank')">$50</button>
+      <button class="donate-btn" onclick="window.open('https://secure.actblue.com/donate/arthur4congress', '_blank')">$100</button>
+      <button class="donate-btn" onclick="window.open('https://secure.actblue.com/donate/arthur4congress', '_blank')">$250</button>
+      <button class="donate-btn" onclick="window.open('https://secure.actblue.com/donate/arthur4congress', '_blank')">Other</button>
+    </div>
+    <div class="progress-bar">
+      <div class="progress"></div>
+      <span class="progress-text"></span>
+    </div>
+  </section>
+
+  <section id="shop" class="section-animate">
+    <h2 id="shop-title">Shop</h2>
+    <div class="shop-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/tshirt.jpg" alt="Campaign T-Shirt">
+          <h3 id="shop-tshirt">Campaign T-Shirt</h3>
+          <p id="shop-tshirt-price">$25.00</p>
+          <a href="shop/tshirt.html" class="btn" id="buy-tshirt">Buy Now</a>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/hat.jpg" alt="Campaign Hat">
+          <h3 id="shop-hat">Campaign Hat</h3>
+          <p id="shop-hat-price">$20.00</p>
+          <a href="shop/hat.html" class="btn" id="buy-hat">Buy Now</a>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/buttons.jpg" alt="Campaign Sticker">
+          <h3 id="shop-buttons">Campaign Sticker</h3>
+          <p id="shop-buttons-price">$5.00</p>
+          <a href="shop/buttons.html" class="btn" id="buy-buttons">Buy Now</a>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/tote.jpg" alt="Campaign Tote Bag">
+          <h3 id="shop-tote">Campaign Tote Bag</h3>
+          <p id="shop-tote-price">$25.00</p>
+          <a href="shop/tote.html" class="btn" id="buy-tote">Buy Now</a>
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <section id="join-us" class="section-animate">
+    <h2 id="join-us-title">Join Us!</h2>
+    <div class="join-content">
+      <div class="join-image">
+        <img src="images/join-us.jpg" alt="Arthur Dixon with supporters">
+      </div>
+      <div class="join-form">
+        <h3 id="join-form-title">Join Us!</h3>
+        <input type="text" placeholder="First Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Zip Code" required>
+        <div class="checkbox">
+          <input type="checkbox" id="consent">
+          <label for="consent" id="consent-label">By checking this box, you agree to receive messages from us. Message & data rates may apply.</label>
+        </div>
+        <a href="#" class="btn" id="submit-btn">Submit</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="socials">
+      <a href="https://twitter.com/arthurdixonca" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com/arthurdixonca" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+    <div class="newsletter">
+      <input type="email" placeholder="Join our newsletter">
+      <button id="subscribe-btn">Subscribe</button>
+    </div>
+    <p id="footer-text">© 2025 Arthur Dixon for Congress | <a href="mailto:info@arthur2026.com">info@arthur2026.com</a> | <a href="mailto:info@arthurdixonforcongress.com">info@arthurdixonforcongress.com</a> | <a href="mailto:info@arthur4congress.com">info@arthur4congress.com</a></p>
+    <div class="disclaimer">
+      <p id="disclaimer-text">Paid for by Arthur Dixon for Congress</p>
+    </div>
+  </footer>
+
+  <div class="floating-donate">
+    <a href="#donate" class="btn" id="floating-donate-btn">Donate</a>
+  </div>
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <div class="chatbot-toggle" aria-label="Toggle chatbot"><i class="fas fa-comment"></i></div>
+  <div class="chatbot">
+    <p id="chatbot-text">Hello! How can I assist you today?</p>
+    <button onclick="alert('Contact us at info@arthur4congress.com!')" id="chatbot-contact">Get in Touch</button>
+    <button onclick="document.querySelector('.chatbot').classList.remove('active')" id="chatbot-close">Close</button>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+    const zoneData = {
+  "pico-union": {
+    title: "Pico Union",
+    image: "images/pico-union.jpg",
+    description: "Pico Union is a vibrant, diverse community with historic architecture. Arthur's housing justice plan will cap rents and protect tenants, ensuring it remains a home for all."
+  },
+  "harvard-heights": {
+    title: "Harvard Heights",
+    image: "images/harvard-heights.jpg",
+    description: "Harvard Heights is a historic gem with beautiful homes and community spirit. Arthur's community-led development will preserve its charm while ensuring affordable housing."
+  },
+  "boyle-heights": {
+    title: "Boyle Heights",
+    image: "images/boyle-heights.jpg",
+    description: "Boyle Heights is culturally rich with a legacy of activism. Arthur's campaign will fight for economic justice and opportunities to keep families rooted."
+  },
+  "koreatown": {
+    title: "Koreatown",
+    image: "images/koreatown.jpg",
+    description: "Koreatown is a bustling hub of Korean culture and diversity. Arthur's economic mobility plan will support small businesses and immigrant entrepreneurs."
+  },
+  "westlake": {
+    title: "Westlake",
+    image: "images/westlake.jpg",
+    description: "Westlake is a diverse neighborhood embodying CA-34's spirit. Arthur's Universal Basic Income will provide financial security, helping families thrive."
+  },
+  "macarthur-park": {
+    title: "MacArthur Park",
+    image: "images/macarthur-park.jpg",
+    description: "MacArthur Park is a central gathering place with an iconic lake. Arthur's Green New Deal will ensure clean, sustainable spaces for all."
+  },
+  "lincoln-heights": {
+    title: "Lincoln Heights",
+    image: "images/lincoln-heights.jpg",
+    description: "Lincoln Heights is one of LA's oldest areas, rich in charm. Arthur's housing justice plan will protect its heritage and affordability."
+  },
+  "el-sereno": {
+    title: "El Sereno",
+    image: "images/el-sereno.jpg",
+    description: "El Sereno is a quiet area with strong local identity. Arthur's education equity initiatives will empower youth with free college and debt relief."
+  },
+  "eagle-rock": {
+    title: "Eagle Rock",
+    image: "images/eagle-rock.jpg",
+    description: "Eagle Rock is an artistic community with a small-town feel. Arthur's economic mobility plan will support local artists and entrepreneurs."
+  },
+  "glassell-park": {
+    title: "Glassell Park",
+    image: "images/glassell-park.jpg",
+    description: "Glassell Park is a growing area with mixed spaces. Arthur's Green New Deal will create union jobs in clean energy for its workforce."
+  },
+  "downtown": {
+    title: "Downtown",
+    image: "images/downtown.jpg",
+    description: "Downtown LA is the city's heart, with skyscrapers and culture. Arthur's Universal Basic Income will help residents afford basics and pursue dreams."
+  },
+  "chinatown": {
+    title: "Chinatown",
+    image: "images/chinatown.jpg",
+    description: "Chinatown is a historic district with vibrant markets. Arthur's economic mobility plan will support small businesses and cultural institutions."
+  },
+  "solano-canyon": {
+    title: "Solano Canyon",
+    image: "images/solano-canyon.jpg",
+    description: "Solano Canyon is a tight-knit community near Dodger Stadium. Arthur's housing justice plan will ensure affordable homes for its families."
+  },
+  "little-tokyo": {
+    title: "Little Tokyo",
+    image: "images/little-tokyo.jpg",
+    description: "Little Tokyo is a cultural hub for Japanese-American heritage. Arthur's community-led development will preserve its history while fostering growth."
+  },
+  "cypress-park": {
+    title: "Cypress Park",
+    image: "images/cypress-park.jpg",
+    description: "Cypress Park is a residential area with a growing arts scene. Arthur's education equity initiatives will provide resources for its youth."
+  },
+  "montecito-heights": {
+    title: "Montecito Heights",
+    image: "images/montecito-heights.jpg",
+    description: "Montecito Heights offers stunning views and peace. Arthur's Green New Deal will ensure sustainable development, preserving its natural beauty."
+  }
+};
+    const modal = document.getElementById('zone-modal');
+    const zoneTitle = document.getElementById('zone-title');
+    const zoneImage = document.getElementById('zone-image');
+    const zoneDescription = document.getElementById('zone-description');
+    const closeModal = document.querySelector('.modal .close');
+
+    document.querySelectorAll('.zone-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const zone = e.target.getAttribute('data-zone');
+        const data = zoneData[zone];
+        zoneTitle.textContent = data.title;
+        zoneImage.src = data.image;
+        zoneImage.alt = `Image of ${data.title} in CA-34`;
+        zoneDescription.textContent = data.description;
+        modal.classList.add('show');
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+      }
+    });
+
+
+    const translations = {
+  en: {
+    heroTitle: "The People’s Campaign for <span style='color: #FFD700;'>Bold Progressive Change</span>",
+    heroSubtitle: "Join Arthur Dixon’s <span style='color: #FFD700;'>Grassroots Movement</span> for a better <span style='color: #FFD700;'>Los Angeles</span>",
+    donateButton: "Donate Now",
+    aboutTitle: "Meet Arthur",
+    aboutText: "I'm Arthur Dixon, a 28-year-old Black vegan chef born in Chicago and raised in the heart of CA-34. I’ve lived the struggles I fight for—from homelessness to washing dishes alongside my mom in a nursing home to make ends meet. Those experiences fuel my mission to ensure no one is left behind. As a community organizer, I’ve worked with groups like the Sunrise Movement and LA Tenant Rights to advocate for housing justice and environmental change. Now, I’m running for Congress to bring Universal Basic Income, a Green New Deal, and guaranteed housing to CA-34. Inspired by Barack Obama’s hope and resilience, I’m here to fight for a future where dignity, equity, and opportunity are rights, not privileges.",
+    visionBtn: "My Vision",
+    supportBtn: "Support Me",
+    joinBtn: "Join Us",
+    platformTitle: "My Platform",
+    ubiTitle: "Universal Basic Income",
+    ubiText: "$1,000/month for every adult. No strings. Economic justice now.",
+    greenTitle: "Green New Deal",
+    greenText: "Jobs and sustainability for CA-34—clean energy, zero waste.",
+    rentTitle: "Rent Relief",
+    rentText: "Cap rents, protect tenants, and keep families in their homes.",
+    healthTitle: "Healthcare for All",
+    healthText: "Universal healthcare—because health is a right, not a privilege.",
+    eduTitle: "Education Equity",
+    eduText: "Free community college and student debt relief for all.",
+    justiceTitle: "Community Safety and Justice Reform",
+    justiceText: "Ending mass incarceration, investing in mental health resources, and building trust between communities and law enforcement.",
+    eventsTitle: "Upcoming Events",
+    event1Title: "Campaign Launch Event in Boyle Heights",
+    event1Date: "June 14th, 2025 | 11:00 AM | Mariachi Plaza",
+    event2Title: "Canvassing Day in Koreatown, Harvard Heights, & Pico Union",
+    event2Date: "June 15th, 2025 | 10:00 AM | Wilshire & Normandie",
+    event3Title: "Rally for Rent Relief & Guaranteed Housing",
+    event3Date: "June 16th, 2025 | 6:00 PM | Echo Park",
+    mapTitle: "District Map",
+    districtTitle: "California's 34th Congressional District",
+    learnMoreBtn: "Learn More",
+    newsTitle: "News & Press",
+    tweetsTitle: "Latest Tweets",
+    news1Date: "APR 7 2025",
+    news1Category: "Press Release",
+    news1Title: "Arthur Dixon Announces Run for Congress in CA-34",
+    news1Text: "Arthur Dixon, a 28-year-old Black vegan chef and lifelong CA-34 resident, has announced his candidacy for Congress. Rooted in decades of grassroots activism and shaped by his own experience with homelessness, Dixon is stepping up to bring community-informed leadership to Washington. His campaign will center the needs of working families, champion Universal Basic Income, environmental justice, and equitable education, and fight for a government that truly works for everyone.",
+    news1ReadMore: "Read More",
+    news2Date: "APR 10 2025",
+    news2Category: "Press Release",
+    news2Title: "Arthur Dixon Launches UBI Pilot Program for CA-34 Families",
+    news2Text: "Today, Arthur Dixon unveiled a groundbreaking initiative: during his campaign, he will provide $1,000/month to one family from each zone in CA-34. “This is a step toward economic justice,” Dixon said. If elected, he plans to expand this into a 1,000-family pilot program for Universal Basic Income, ensuring no one in CA-34 is left behind.",
+    news2ReadMore: "Read More",
+    news3Date: "APR 15 2025",
+    news3Category: "Press Release",
+    news3Title: "Arthur Dixon Champions Green New Deal for CA-34",
+    news3Text: "Arthur Dixon has outlined a bold vision for a Green New Deal in CA-34, focusing on sustainable jobs and zero-waste initiatives. “Our planet can’t wait,” Dixon declared, emphasizing the need for clean energy and community-led environmental justice.",
+    news3ReadMore: "Read More",
+    news4Date: "APR 20 2025",
+    news4Category: "Press Release",
+    news4Title: "Arthur Dixon Pushes for Guaranteed Housing and Rent Relief",
+    news4Text: "With housing costs soaring, Arthur Dixon is advocating for guaranteed housing and rent relief in CA-34. His plan includes rent caps and tenant protections to ensure families can thrive in their homes without fear of displacement.",
+    news4ReadMore: "Read More",
+    news5Date: "APR 25 2025",
+    news5Category: "Press Release",
+    news5Title: "Arthur Dixon Calls for Abolishing ICE",
+    news5Text: "Arthur Dixon has taken a bold stance on immigration justice, calling for the abolition of ICE. “We need a system that uplifts our immigrant neighbors, not one that tears families apart,” Dixon said, advocating for compassionate, community-focused reforms.",
+    news5ReadMore: "Read More",
+    galleryTitle: "Gallery",
+    videosTitle: "Speeches & Videos",
+    donateTitle: "Support the Movement",
+    donateTextH3: "Arthur for All of CA-34",
+    donateTextP: "Arthur Dixon is running for Congress in California’s 34th Congressional District. Who is he? What is he fighting for?",
+    learnMoreDonate: "Learn More",
+    supportText: "Support our work? Consider making a donation!",
+    shopTitle: "Shop",
+    shopTshirt: "Campaign T-Shirt",
+    shopTshirtPrice: "$25.00",
+    buyTshirt: "Buy Now",
+    shopHat: "Campaign Hat",
+    shopHatPrice: "$20.00",
+    buyHat: "Buy Now",
+    shopSticker: "Campaign Button",
+    shopStickerPrice: "$5.00",
+    buySticker: "Buy Now",
+    shopTote: "Campaign Tote Bag",
+    shopTotePrice: "$15.00",
+    buyTote: "Buy Now",
+    joinUsTitle: "Join Us!",
+    joinFormTitle: "Join Us!",
+    consentLabel: "By checking this box, you agree to receive messages from us. Message & data rates may apply.",
+    submitBtn: "Submit",
+    subscribeBtn: "Subscribe",
+    footerText: "© 2025 Arthur Dixon for Congress | info@arthur2026.com | info@arthurdixonforcongress.com | info@arthur4congress.com",
+    disclaimerText: "Paid for by Arthur Dixon for Congress",
+    floatingDonateBtn: "Donate",
+    chatbotText: "Hello! How can I assist you today?",
+    chatbotContact: "Get in Touch",
+    chatbotClose: "Close"
+  },
+  es: {
+    heroTitle: "La Campaña del Pueblo para un <span style='color: #FFD700;'>Cambio Progresista Audaz</span>",
+    heroSubtitle: "Únete al <span style='color: #FFD700;'>Movimiento de Base</span> de Arthur Dixon por un mejor <span style='color: #FFD700;'>Los Ángeles</span>",
+    donateButton: "Donar Ahora",
+    aboutTitle: "Conoce a Arthur",
+    aboutText: "Soy Arthur Dixon, un chef vegano negro de 28 años nacido en Chicago y criado en el corazón de CA-34. He vivido las luchas por las que lucho, desde la falta de vivienda hasta lavar platos junto a mi madre en un asilo de ancianos para llegar a fin de mes. Esas experiencias alimentan mi misión de asegurar que nadie se quede atrás. Como organizador comunitario, he trabajado con grupos como el Movimiento Sunrise y LA Tenant Rights para abogar por la justicia habitacional y el cambio ambiental. Ahora, me postulo para el Congreso para llevar el Ingreso Básico Universal, un Nuevo Trato Verde y vivienda garantizada a CA-34. Inspirado por la esperanza y la resiliencia de Barack Obama, estoy aquí para luchar por un futuro donde la dignidad, la equidad y la oportunidad sean derechos, no privilegios.",
+    visionBtn: "Mi Visión",
+    supportBtn: "Apóyame",
+    joinBtn: "Únete a Nosotros",
+    platformTitle: "Mi Plataforma",
+    ubiTitle: "Ingreso Básico Universal",
+    ubiText: "$1,000/mes para cada adulto. Sin condiciones. Justicia económica ahora.",
+    greenTitle: "Nuevo Trato Verde",
+    greenText: "Empleos y sostenibilidad para CA-34—energía limpia, cero residuos.",
+    rentTitle: "Alivio de Alquiler",
+    rentText: "Limite los alquileres, proteja a los inquilinos y mantenga a las familias en sus hogares.",
+    healthTitle: "Salud para Todos",
+    healthText: "Atención médica universal—porque la salud es un derecho, no un privilegio.",
+    eduTitle: "Equidad Educativa",
+    eduText: "Colegio comunitario gratuito y alivio de la deuda estudiantil para todos.",
+    justiceTitle: "Seguridad Comunitaria y Reforma de la Justicia",
+    justiceText: "Terminar con el encarcelamiento masivo, invertir en recursos de salud mental y construir confianza entre las comunidades y las fuerzas del orden.",
+    eventsTitle: "Próximos Eventos",
+    event1Title: "Evento de Lanzamiento de Campaña en Boyle Heights",
+    event1Date: "14 de junio de 2025 | 11:00 AM | Plaza Mariachi",
+    event2Title: "Día de Canvassing en Koreatown, Harvard Heights y Pico Union",
+    event2Date: "15 de junio de 2025 | 10:00 AM | Wilshire y Normandie",
+    event3Title: "Manifestación por el Alivio de Alquiler y Vivienda Garantizada",
+    event3Date: "16 de junio de 2025 | 6:00 PM | Echo Park",
+    mapTitle: "Mapa del Distrito",
+    districtTitle: "34º Distrito Congresional de California",
+    learnMoreBtn: "Aprende Más",
+    newsTitle: "Noticias y Prensa",
+    tweetsTitle: "Últimos Tweets",
+    news1Date: "7 de abril de 2025",
+    news1Category: "Comunicado de Prensa",
+    news1Title: "Arthur Dixon Anuncia su Candidatura para el Congreso en CA-34",
+    news1Text: "Arthur Dixon, un chef vegano negro de 28 años y residente de toda la vida de CA-34, ha anunciado su candidatura para el Congreso. Arraigado en décadas de activismo de base y moldeado por su propia experiencia con la falta de vivienda, Dixon está dando un paso adelante para llevar liderazgo informado por la comunidad a Washington. Su campaña se centrará en las necesidades de las familias trabajadoras, defenderá el Ingreso Básico Universal, la justicia ambiental y la educación equitativa, y luchará por un gobierno que realmente funcione para todos.",
+    news1ReadMore: "Leer Más",
+    news2Date: "10 de abril de 2025",
+    news2Category: "Comunicado de Prensa",
+    news2Title: "Arthur Dixon Lanza un Programa Piloto de IBU para Familias de CA-34",
+    news2Text: "Hoy, Arthur Dixon dio a conocer una iniciativa innovadora: durante su campaña, proporcionará $1,000/mes a una familia de cada zona en CA-34. “Este es un paso hacia la justicia económica,” dijo Dixon. Si es elegido, planea expandir esto en un programa piloto de 1,000 familias para el Ingreso Básico Universal, asegurando que nadie en CA-34 se quede atrás.",
+    news2ReadMore: "Leer Más",
+    news3Date: "15 de abril de 2025",
+    news3Category: "Comunicado de Prensa",
+    news3Title: "Arthur Dixon Aboga por un Nuevo Trato Verde para CA-34",
+    news3Text: "Arthur Dixon ha delineado una visión audaz para un Nuevo Trato Verde en CA-34, enfocándose en empleos sostenibles e iniciativas de cero residuos. “Nuestro planeta no puede esperar,” declaró Dixon, enfatizando la necesidad de energía limpia y justicia ambiental liderada por la comunidad.",
+    news3ReadMore: "Leer Más",
+    news4Date: "20 de abril de 2025",
+    news4Category: "Comunicado de Prensa",
+    news4Title: "Arthur Dixon Impulsa Vivienda Garantizada y Alivio de Alquiler",
+    news4Text: "Con los costos de vivienda disparados, Arthur Dixon está abogando por vivienda garantizada y alivio de alquiler en CA-34. Su plan incluye límites de alquiler y protecciones para inquilinos para asegurar que las familias puedan prosperar en sus hogares sin temor al desplazamiento.",
+    news4ReadMore: "Leer Más",
+    news5Date: "25 de abril de 2025",
+    news5Category: "Comunicado de Prensa",
+    news5Title: "Arthur Dixon Pide la Abolición de ICE",
+    news5Text: "Arthur Dixon ha tomado una postura audaz sobre la justicia migratoria, pidiendo la abolición de ICE. “Necesitamos un sistema que eleve a nuestros vecinos inmigrantes, no uno que desgarre familias,” dijo Dixon, abogando por reformas compasivas y enfocadas en la comunidad.",
+    news5ReadMore: "Leer Más",
+    galleryTitle: "Galería",
+    videosTitle: "Discursos y Videos",
+    donateTitle: "Apoya el Movimiento",
+    donateTextH3: "Arthur para Todo CA-34",
+    donateTextP: "Arthur Dixon se postula para el Congreso en el 34º Distrito Congresional de California. ¿Quién es él? ¿Por qué está luchando?",
+    learnMoreDonate: "Aprende Más",
+    supportText: "¿Apoyas nuestro trabajo? ¡Considera hacer una donación!",
+    shopTitle: "Tienda",
+    shopTshirt: "Camiseta de Campaña",
+    shopTshirtPrice: "$25.00",
+    buyTshirt: "Comprar Ahora",
+    shopHat: "Sombrero de Campaña",
+    shopHatPrice: "$20.00",
+    buyHat: "Comprar Ahora",
+    shopSticker: "Pegatina de Campaña",
+    shopStickerPrice: "$5.00",
+    buySticker: "Comprar Ahora",
+    shopTote: "Bolsa de Campaña",
+    shopTotePrice: "$15.00",
+    buyTote: "Comprar Ahora",
+    joinUsTitle: "¡Únete a Nosotros!",
+    joinFormTitle: "¡Únete a Nosotros!",
+    consentLabel: "Al marcar esta casilla, aceptas recibir mensajes de nuestra parte. Pueden aplicarse tarifas de mensajes y datos.",
+    submitBtn: "Enviar",
+    subscribeBtn: "Suscribirse",
+    footerText: "© 2025 Arthur Dixon para el Congreso | info@arthur2026.com | info@arthurdixonforcongress.com | info@arthur4congress.com",
+    disclaimerText: "Pagado por Arthur Dixon para el Congreso",
+    floatingDonateBtn: "Donar",
+    chatbotText: "¡Hola! ¿Cómo puedo ayudarte hoy?",
+    chatbotContact: "Ponerse en Contacto",
+    chatbotClose: "Cerrar"
+  },
+  ko: {
+    heroTitle: "대담한 진보적 변화를 위한 <span style='color: #FFD700;'>인민 캠페인</span>",
+    heroSubtitle: "Arthur Dixon의 <span style='color: #FFD700;'>풀뿌리 운동</span>에 참여하여 더 나은 <span style='color: #FFD700;'>로스앤젤레스</span>를 만들어 보세요",
+    donateButton: "지금 기부하기",
+    aboutTitle: "Arthur를 만나보세요",
+    aboutText: "저는 Arthur Dixon입니다. 시카고에서 태어나 CA-34의 중심부에서 자란 28세 흑인 비건 셰프입니다. 제가 싸우는 이유는 제가 직접 겪은 어려움—노숙 생활부터 엄마와 함께 요양원에서 접시를 닦으며 생계를 유지했던 경험—에서 비롯됩니다. 이런 경험들이 저를 아무도 소외되지 않도록 하겠다는 사명으로 이끌었습니다. 지역 사회 조직자로서 저는 Sunrise Movement와 LA Tenant Rights 같은 단체들과 함께 주거 정의와 환경 변화를 위해 일해왔습니다. 이제 저는 CA-34에 보편적 기본 소득, 그린 뉴딜, 그리고 보장된 주거를 가져오기 위해 의회에 출마합니다. Barack Obama의 희망과 회복력에서 영감을 받아, 존엄, 형평, 기회가 특권이 아닌 권리가 되는 미래를 위해 싸우고 있습니다.",
+    visionBtn: "나의 비전",
+    supportBtn: "나를 지지해 주세요",
+    joinBtn: "우리와 함께하세요",
+    platformTitle: "나의 플랫폼",
+    ubiTitle: "보편적 기본 소득",
+    ubiText: "$1,000/월, 모든 성인에게. 조건 없음. 지금 경제적 정의를.",
+    greenTitle: "그린 뉴딜",
+    greenText: "CA-34를 위한 일자리와 지속 가능성—청정 에너지, 제로 웨이스트.",
+    rentTitle: "임대료 구제",
+    rentText: "임대료 상한선 설정, 세입자 보호, 가족들이 집에서 안정적으로 생활하도록.",
+    healthTitle: "모두를 위한 의료",
+    healthText: "보편적 의료—건강은 특권이 아니라 권리입니다.",
+    eduTitle: "교육 형평성",
+    eduText: "모두를 위한 무료 커뮤니티 칼리지와 학자금 부채 구제.",
+    justiceTitle: "커뮤니티 안전과 정의 개혁",
+    justiceText: "대량 수감 종료, 정신 건강 자원 투자, 커뮤니티와 법 집행 기관 간 신뢰 구축.",
+    eventsTitle: "다가오는 이벤트",
+    event1Title: "보일 하이츠에서 열리는 캠페인 런칭 이벤트",
+    event1Date: "2025년 6월 14일 | 오전 11시 | 마리아치 플라자",
+    event2Title: "코리아타운, 하버드 하이츠, 피코 유니언에서 열리는 캔버싱 데이",
+    event2Date: "2025년 6월 15일 | 오전 10시 | 윌셔 & 노르망디",
+    event3Title: "임대료 구제 및 보장된 주거를 위한 집회",
+    event3Date: "2025년 6월 16일 | 오후 6시 | 에코 파크",
+    mapTitle: "지구 지도",
+    districtTitle: "캘리포니아 34번째 의회 지구",
+    learnMoreBtn: "더 알아보기",
+    newsTitle: "뉴스 & 언론",
+    tweetsTitle: "최신 트윗",
+    news1Date: "2025년 4월 7일",
+    news1Category: "보도 자료",
+    news1Title: "Arthur Dixon, CA-34 의회 출마 발표",
+    news1Text: "28세 흑인 비건 셰프이자 CA-34의 평생 거주자인 Arthur Dixon이 의회 출마를 발표했습니다. 수십 년간의 풀뿌리 활동에 뿌리를 두고 노숙 경험으로 형성된 Dixon은 워싱턴에 커뮤니티 중심의 리더십을 가져오기 위해 나섰습니다. 그의 캠페인은 근로 가정의 필요를 중심으로, 보편적 기본 소득, 환경 정의, 공평한 교육을 옹호하며, 모두를 위한 정부를 위해 싸울 것입니다.",
+    news1ReadMore: "더 읽기",
+    news2Date: "2025년 4월 10일",
+    news2Category: "보도 자료",
+    news2Title: "Arthur Dixon, CA-34 가족을 위한 UBI 파일럿 프로그램 시작",
+    news2Text: "오늘, Arthur Dixon은 획기적인 계획을 발표했습니다: 캠페인 기간 동안 CA-34의 각 구역에서 한 가정에 월 $1,000을 제공할 것입니다. “이것은 경제적 정의를 향한 한 걸음입니다,”라고 Dixon은 말했습니다. 당선되면 그는 이를 1,000가정 파일럿 프로그램으로 확장하여 CA-34에서 누구도 소외되지 않도록 할 계획입니다.",
+    news2ReadMore: "더 읽기",
+    news3Date: "2025년 4월 15일",
+    news3Category: "보도 자료",
+    news3Title: "Arthur Dixon, CA-34를 위한 그린 뉴딜 옹호",
+    news3Text: "Arthur Dixon은 CA-34에서 지속 가능한 일자리와 제로 웨이스트 이니셔티브에 초점을 맞춘 그린 뉴딜에 대한 대담한 비전을 제시했습니다. “우리 지구는 기다릴 수 없습니다,”라고 Dixon은 선언하며, 청정 에너지와 커뮤니티 주도의 환경 정의의 필요성을 강조했습니다.",
+    news3ReadMore: "더 읽기",
+    news4Date: "2025년 4월 20일",
+    news4Category: "보도 자료",
+    news4Title: "Arthur Dixon, 보장된 주거와 임대료 구제 추진",
+    news4Text: "주거 비용이 치솟는 가운데, Arthur Dixon은 CA-34에서 보장된 주거와 임대료 구제를 옹호하고 있습니다. 그의 계획에는 임대료 상한선과 세입자 보호가 포함되어 가족들이 이주에 대한 두려움 없이 집에서 번영할 수 있도록 보장합니다.",
+    news4ReadMore: "더 읽기",
+    news5Date: "2025년 4월 25일",
+    news5Category: "보도 자료",
+    news5Title: "Arthur Dixon, ICE 폐지 요구",
+    news5Text: "Arthur Dixon은 이민 정의에 대한 대담한 입장을 취하며 ICE 폐지를 요구했습니다. “우리는 이민자 이웃을 고양시키는 시스템이 필요합니다, 가족을 찢는 시스템이 아니라,”라고 Dixon은 말하며, 연민과 커뮤니티 중심의 개혁을 옹호했습니다.",
+    news5ReadMore: "더 읽기",
+    galleryTitle: "갤러리",
+    videosTitle: "연설 & 비디오",
+    donateTitle: "운동 지원",
+    donateTextH3: "CA-34 전체를 위한 Arthur",
+    donateTextP: "Arthur Dixon은 캘리포니아 34번째 의회 지구에서 의회에 출마하고 있습니다. 그는 누구인가요? 무엇을 위해 싸우고 있나요?",
+    learnMoreDonate: "더 알아보기",
+    supportText: "우리의 일을 지원하시겠습니까? 기부를 고려해 보세요!",
+    shopTitle: "상점",
+    shopTshirt: "캠페인 티셔츠",
+    shopTshirtPrice: "$25.00",
+    buyTshirt: "지금 구매",
+    shopHat: "캠페인 모자",
+    shopHatPrice: "$20.00",
+    buyHat: "지금 구매",
+    shopSticker: "캠페인 스티커",
+    shopStickerPrice: "$5.00",
+    buySticker: "지금 구매",
+    shopTote: "캠페인 토트백",
+    shopTotePrice: "$15.00",
+    buyTote: "지금 구매",
+    joinUsTitle: "우리와 함께하세요!",
+    joinFormTitle: "우리와 함께하세요!",
+    consentLabel: "이 상자를 체크함으로써, 당신은 우리로부터 메시지를 받는 데 동의합니다. 메시지 및 데이터 요금이 적용될 수 있습니다.",
+    submitBtn: "제출",
+    subscribeBtn: "구독",
+    footerText: "© 2025 Arthur Dixon for Congress | info@arthur2026.com | info@arthurdixonforcongress.com | info@arthur4congress.com",
+    disclaimerText: "Arthur Dixon for Congress에서 지불함",
+    floatingDonateBtn: "기부",
+    chatbotText: "안녕하세요! 오늘 어떻게 도와드릴까요?",
+    chatbotContact: "연락하기",
+    chatbotClose: "닫기"
+  },
+  zh: {
+    heroTitle: "为<span style='color: #FFD700;'>大胆的进步变革</span>而设的人民运动",
+    heroSubtitle: "加入Arthur Dixon的<span style='color: #FFD700;'>基层运动</span>，共同打造更好的<span style='color: #FFD700;'>洛杉矶</span>",
+    donateButton: "现在捐款",
+    aboutTitle: "认识Arthur",
+    aboutText: "我是Arthur Dixon，一位28岁的黑人素食厨师，出生于芝加哥，在CA-34的中心长大。我所奋斗的目标源于我亲身经历的艰辛——从无家可归到与妈妈一起在养老院洗盘子以维持生计。这些经历激发了我确保无人被遗弃的使命。作为社区组织者，我曾与Sunrise Movement和LA Tenant Rights等团体合作，倡导住房正义和环境变革。现在，我竞选国会议员，旨在为CA-34带来全民基本收入、绿色新政和保障性住房。受到Barack Obama的希望与韧性的启发，我在此为一个尊严、公平和机会成为权利而非特权的未来而战。",
+    visionBtn: "我的愿景",
+    supportBtn: "支持我",
+    joinBtn: "加入我们",
+    platformTitle: "我的纲领",
+    ubiTitle: "全民基本收入",
+    ubiText: "每位成人每月$1,000，无条件。现在实现经济正义。",
+    greenTitle: "绿色新政",
+    greenText: "为CA-34创造就业和可持续性——清洁能源，零浪费。",
+    rentTitle: "租金救济",
+    rentText: "设定租金上限，保护租户，让家庭安心居住。",
+    healthTitle: "全民医疗",
+    healthText: "全民医疗——因为健康是权利，而非特权。",
+    eduTitle: "教育公平",
+    eduText: "为所有人提供免费社区大学和学生债务减免。",
+    justiceTitle: "社区安全与司法改革",
+    justiceText: "结束大规模监禁，投资心理健康资源，建立社区与执法机构之间的信任。",
+    eventsTitle: "即将举行的活动",
+    event1Title: "博伊尔高地竞选启动活动",
+    event1Date: "2025年6月14日 | 上午11:00 | 马里亚奇广场",
+    event2Title: "韩国城、哈佛高地和皮科联盟的拉票日",
+    event2Date: "2025年6月15日 | 上午10:00 | 威尔希尔与诺曼迪",
+    event3Title: "租金救济和保障住房集会",
+    event3Date: "2025年6月16日 | 下午6:00 | 回声公园",
+    mapTitle: "选区地图",
+    districtTitle: "加利福尼亚第34国会选区",
+    learnMoreBtn: "了解更多",
+    newsTitle: "新闻与媒体",
+    tweetsTitle: "最新推文",
+    news1Date: "2025年4月7日",
+    news1Category: "新闻发布",
+    news1Title: "Arthur Dixon宣布竞选CA-34国会议员",
+    news1Text: "Arthur Dixon，一位28岁的黑人素食厨师及CA-34的终身居民，宣布竞选国会议员。凭借数十年的基层活动经验和自身无家可归的经历，Dixon挺身而出，将社区主导的领导力带到华盛顿。他的竞选将以劳动家庭的需求为核心，倡导全民基本收入、环境正义和公平教育，为一个真正为所有人服务的政府而奋斗。",
+    news1ReadMore: "阅读更多",
+    news2Date: "2025年4月10日",
+    news2Category: "新闻发布",
+    news2Title: "Arthur Dixon为CA-34家庭推出UBI试点计划",
+    news2Text: "今天，Arthur Dixon公布了一项开创性举措：在竞选期间，他将为CA-34每个区域的一户家庭提供每月$1,000。“这是迈向经济正义的一步，”Dixon说。如果当选，他计划将其扩展为1,000户家庭的全民基本收入试点计划，确保CA-34无人被遗漏。",
+    news2ReadMore: "阅读更多",
+    news3Date: "2025年4月15日",
+    news3Category: "新闻发布",
+    news3Title: "Arthur Dixon为CA-34倡导绿色新政",
+    news3Text: "Arthur Dixon为CA-34提出了绿色新政的大胆愿景，重点是可持续就业和零浪费举措。“我们的星球刻不容缓，”Dixon宣称，强调清洁能源和社区主导的环境正义的必要性。",
+    news3ReadMore: "阅读更多",
+    news4Date: "2025年4月20日",
+    news4Category: "新闻发布",
+    news4Title: "Arthur Dixon推动保障住房和租金救济",
+    news4Text: "随着住房成本飙升，Arthur Dixon正在为CA-34倡导保障住房和租金救济。他的计划包括租金上限和租户保护，确保家庭能在家中繁荣发展，不必担心被迫搬迁。",
+    news4ReadMore: "阅读更多",
+    news5Date: "2025年4月25日",
+    news5Category: "新闻发布",
+    news5Title: "Arthur Dixon呼吁废除ICE",
+    news5Text: "Arthur Dixon在移民正义问题上采取了大胆立场，呼吁废除ICE。“我们需要一个提升移民邻居的系统，而不是撕裂家庭的系统，”Dixon说，倡导富有同情心、以社区为中心的改革。",
+    news5ReadMore: "阅读更多",
+    galleryTitle: "画廊",
+    videosTitle: "演讲与视频",
+    donateTitle: "支持运动",
+    donateTextH3: "为整个CA-34服务的Arthur",
+    donateTextP: "Arthur Dixon正在竞选加利福尼亚第34国会选区的国会议员。他是谁？他为何而战？",
+    learnMoreDonate: "了解更多",
+    supportText: "支持我们的工作？请考虑捐款！",
+    shopTitle: "商店",
+    shopTshirt: "竞选T恤",
+    shopTshirtPrice: "$25.00",
+    buyTshirt: "立即购买",
+    shopHat: "竞选帽子",
+    shopHatPrice: "$20.00",
+    buyHat: "立即购买",
+    shopSticker: "竞选贴纸",
+    shopStickerPrice: "$5.00",
+    buySticker: "立即购买",
+    shopTote: "竞选手提袋",
+    shopTotePrice: "$15.00",
+    buyTote: "立即购买",
+    joinUsTitle: "加入我们！",
+    joinFormTitle: "加入我们！",
+    consentLabel: "勾选此框即表示您同意接收我们的消息。可能适用消息和数据费用。",
+    submitBtn: "提交",
+    subscribeBtn: "订阅",
+    footerText: "© 2025 Arthur Dixon for Congress | info@arthur2026.com | info@arthurdixonforcongress.com | info@arthur4congress.com",
+    disclaimerText: "由Arthur Dixon for Congress支付",
+    floatingDonateBtn: "捐款",
+    chatbotText: "你好！我今天如何帮助你？",
+    chatbotContact: "联系我们",
+    chatbotClose: "关闭"
+  },
+  ja: {
+    heroTitle: "<span style='color: #FFD700;'>大胆な進歩的変化</span>のための人民キャンペーン",
+    heroSubtitle: "Arthur Dixonの<span style='color: #FFD700;'>草の根運動</span>に参加して、より良い<span style='color: #FFD700;'>ロサンゼルス</span>を",
+    donateButton: "今すぐ寄付",
+    aboutTitle: "Arthurを知る",
+    aboutText: "私はArthur Dixon、シカゴ生まれでCA-34の中心で育った28歳の黒人ビーガンシェフです。私が戦う理由は、私が経験した苦難——ホームレス生活から、母と一緒に老人ホームで皿洗いをして生計を立てたこと——にあります。これらの経験が、誰も取り残されないようにするという私の使命を支えています。コミュニティオーガナイザーとして、Sunrise MovementやLA Tenant Rightsなどのグループと協力し、住宅正義と環境変革を提唱してきました。今、私はCA-34に普遍的ベーシックインカム、グリーンニューディール、そして保証された住宅をもたらすために議会に立候補しています。Barack Obamaの希望と回復力に触発され、尊厳、公平、機会が特権ではなく権利となる未来のために戦っています。",
+    visionBtn: "私のビジョン",
+    supportBtn: "私をサポート",
+    joinBtn: "一緒に",
+    platformTitle: "私のプラットフォーム",
+    ubiTitle: "普遍的ベーシックインカム",
+    ubiText: "成人1人当たり月$1,000。条件なし。今すぐ経済的正義を。",
+    greenTitle: "グリーンニューディール",
+    greenText: "CA-34のための仕事と持続可能性——クリーンエネルギー、ゼロウェイスト。",
+    rentTitle: "家賃救済",
+    rentText: "家賃の上限を設定し、テナントを保護し、家族が安心して暮らせるように。",
+    healthTitle: "すべての人に医療を",
+    healthText: "普遍的医療——健康は特権ではなく権利だから。",
+    eduTitle: "教育の公平性",
+    eduText: "すべての人に無料のコミュニティカレッジと学生ローンの救済を。",
+    justiceTitle: "コミュニティの安全と司法改革",
+    justiceText: "大量収監の終了、精神的健康資源への投資、コミュニティと法執行機関の信頼構築。",
+    eventsTitle: "今後のイベント",
+    event1Title: "ボイルハイツでのキャンペーン開始イベント",
+    event1Date: "2025年6月14日 | 午前11時 | マリアッチプラザ",
+    event2Title: "コリアタウン、ハーバードハイツ、ピコユニオンでのキャンバシングデー",
+    event2Date: "2025年6月15日 | 午前10時 | ウィルシャー＆ノルマンディ",
+    event3Title: "家賃救済と保証された住宅のためのラリー",
+    event3Date: "2025年6月16日 | 午後6時 | エコーパーク",
+    mapTitle: "地区マップ",
+    districtTitle: "カリフォルニア第34議会地区",
+    learnMoreBtn: "もっと知る",
+    newsTitle: "ニュース＆プレス",
+    tweetsTitle: "最新のツイート",
+    news1Date: "2025年4月7日",
+    news1Category: "プレスリリース",
+    news1Title: "Arthur Dixon、CA-34での議会立候補を発表",
+    news1Text: "28歳の黒人ビーガンシェフで、CA-34の生涯住民であるArthur Dixonが議会立候補を発表しました。数十年にわたる草の根活動に根ざし、自身が経験したホームレス生活から形成されたDixonは、ワシントンにコミュニティ主導のリーダーシップをもたらすために立ち上がりました。彼のキャンペーンは労働者家庭のニーズを中心に、普遍的ベーシックインカム、環境正義、公平な教育を推進し、すべての人に真に機能する政府のために戦います。",
+    news1ReadMore: "もっと読む",
+    news2Date: "2025年4月10日",
+    news2Category: "プレスリリース",
+    news2Title: "Arthur Dixon、CA-34の家族向けUBIパイロットプログラムを開始",
+    news2Text: "今日、Arthur Dixonは画期的な取り組みを発表しました：キャンペーン期間中、CA-34の各ゾーンから1家族に月$1,000を提供します。「これは経済的正義への一歩です」とDixonは述べました。選出された場合、彼はこの取り組みを1,000家族のパイロットプログラムに拡大し、CA-34で誰も取り残されないようにする計画です。",
+    news2ReadMore: "もっと読む",
+    news3Date: "2025年4月15日",
+    news3Category: "プレスリリース",
+    news3Title: "Arthur Dixon、CA-34のためのグリーンニューディールを推進",
+    news3Text: "Arthur Dixonは、CA-34におけるグリーンニューディールの大胆なビジョンを提示しました。持続可能な仕事とゼロウェイストイニシアチブに焦点を当て、「我々の惑星は待てません」とDixonは宣言し、クリーンエネルギーとコミュニティ主導の環境正義の必要性を強調しました。",
+    news3ReadMore: "もっと読む",
+    news4Date: "2025年4月20日",
+    news4Category: "プレスリリース",
+    news4Title: "Arthur Dixon、保障された住宅と家賃救済を推進",
+    news4Text: "住宅費が急騰する中、Arthur DixonはCA-34で保障された住宅と家賃救済を提唱しています。彼の計画には家賃の上限設定とテナント保護が含まれており、家族が立ち退きの恐れなく自宅で繁栄できるようにします。",
+    news4ReadMore: "もっと読む",
+    news5Date: "2025年4月25日",
+    news5Category: "プレスリリース",
+    news5Title: "Arthur Dixon、ICE廃止を求める",
+    news5Text: "Arthur Dixonは移民正義について大胆な立場を取り、ICEの廃止を求めました。「我々は移民の近隣住民を高揚させるシステムが必要であり、家族を引き裂くシステムではありません」とDixonは述べ、思いやりがありコミュニティ中心の改革を提唱しました。",
+    news5ReadMore: "もっと読む",
+    galleryTitle: "ギャラリー",
+    videosTitle: "スピーチ＆ビデオ",
+    donateTitle: "運動をサポート",
+    donateTextH3: "CA-34全体のためのArthur",
+    donateTextP: "Arthur Dixonはカリフォルニア第34議会地区で議会に立候補しています。彼は誰ですか？何のために戦っていますか？",
+    learnMoreDonate: "もっと知る",
+    supportText: "我々の活動をサポートしますか？寄付を検討してください！",
+    shopTitle: "ショップ",
+    shopTshirt: "キャンペーンTシャツ",
+    shopTshirtPrice: "$25.00",
+    buyTshirt: "今すぐ購入",
+    shopHat: "キャンペーン帽子",
+    shopHatPrice: "$20.00",
+    buyHat: "今すぐ購入",
+    shopSticker: "キャンペーンステッカー",
+    shopStickerPrice: "$5.00",
+    buySticker: "今すぐ購入",
+    shopTote: "キャンペーントートバッグ",
+    shopTotePrice: "$15.00",
+    buyTote: "今すぐ購入",
+    joinUsTitle: "一緒に参加しましょう！",
+    joinFormTitle: "一緒に参加しましょう！",
+    consentLabel: "このボックスにチェックを入れることで、私たちからのメッセージの受信に同意します。メッセージおよびデータ料金が適用される場合があります。",
+    submitBtn: "送信",
+    subscribeBtn: "購読",
+    footerText: "© 2025 Arthur Dixon for Congress | info@arthur2026.com | info@arthurdixonforcongress.com | info@arthur4congress.com",
+    disclaimerText: "Arthur Dixon for Congressによって支払われました",
+    floatingDonateBtn: "寄付",
+    chatbotText: "こんにちは！今日どのようにお手伝いしましょうか？",
+    chatbotContact: "連絡を取る",
+    chatbotClose: "閉じる"
+  },
+  tl: {
+    heroTitle: "Ang Kampanya ng Tao para sa <span style='color: #FFD700;'>Matapang na Progresibong Pagbabago</span>",
+    heroSubtitle: "Sumali sa <span style='color: #FFD700;'>Paghihikayat sa Grassroots</span> ni Arthur Dixon para sa mas magandang <span style='color: #FFD700;'>Los Angeles</span>",
+    donateButton: "Mag-donate Ngayon",
+    aboutTitle: "Makilala si Arthur",
+    aboutText: "Ako si Arthur Dixon, isang 28-taong-gulang na Black vegan chef na ipinanganak sa Chicago at lumaki sa puso ng CA-34. Naranasan ko ang mga pakikibaka na hinintay ko—mula sa kawalan ng tirahan hanggang sa paghuhugas ng mga pinggan kasama ang aking ina sa isang nursing home upang makabuhay. Ang mga karanasang iyon ang nagtulak sa akin na tiyakin na walang maiiwan. Bilang isang community organizer, nakipagtulungan ako sa mga grupo tulad ng Sunrise Movement at LA Tenant Rights upang ipaglaban ang hustisya sa pabahay at pagbabago sa kapaligiran. Ngayon, tumatakbo ako para sa Kongreso upang dalhin ang Universal Basic Income, isang Green New Deal, at garantisadong pabahay sa CA-34. Inspirasyon ng pag-asa at katatagan ni Barack Obama, narito ako upang ipaglaban ang isang hinaharap kung saan ang dignidad, pagkakapantay-pantay, at oportunidad ay mga karapatan, hindi mga pribilehiyo.",
+    visionBtn: "Aking Pananaw",
+    supportBtn: "Suportahan Ako",
+    joinBtn: "Sumali sa Amin",
+    platformTitle: "Aking Plataporma",
+    ubiTitle: "Universal Basic Income",
+    ubiText: "$1,000/buwan para sa bawat adulto. Walang kondisyon. Hustisya sa ekonomiya ngayon.",
+    greenTitle: "Green New Deal",
+    greenText: "Mga trabaho at sustainability para sa CA-34—malinis na enerhiya, zero waste.",
+    rentTitle: "Tulong sa Renta",
+    rentText: "Limitahan ang renta, protektahan ang mga nangungupahan, at panatilihin ang mga pamilya sa kanilang mga tahanan.",
+    healthTitle: "Pangangalagang Pangkalusugan para sa Lahat",
+    healthText: "Universal healthcare—dahil ang kalusugan ay isang karapatan, hindi isang pribilehiyo.",
+    eduTitle: "Pagkakapantay-pantay sa Edukasyon",
+    eduText: "Libreng community college at tulong sa utang ng estudyante para sa lahat.",
+    justiceTitle: "Kaligtasan ng Komunidad at Reporma sa Hustisya",
+    justiceText: "Tapusin ang mass incarceration, mamuhunan sa mga mapagkukunan ng kalusugan ng isip, at bumuo ng tiwala sa pagitan ng mga komunidad at mga tagapagpatupad ng batas.",
+    eventsTitle: "Mga Paparating na Kaganapan",
+    event1Title: "Paglulunsad ng Kampanya sa Boyle Heights",
+    event1Date: "Hunyo 14, 2025 | 11:00 AM | Mariachi Plaza",
+    event2Title: "Araw ng Canvassing sa Koreatown, Harvard Heights, at Pico Union",
+    event2Date: "Hunyo 15, 2025 | 10:00 AM | Wilshire at Normandie",
+    event3Title: "Rally para sa Tulong sa Renta at Garantisadong Pabahay",
+    event3Date: "Hunyo 16, 2025 | 6:00 PM | Echo Park",
+    mapTitle: "Mapa ng Distrito",
+    districtTitle: "Ika-34 na Congressional District ng California",
+    learnMoreBtn: "Matuto Pa",
+    newsTitle: "Balita at Press",
+    tweetsTitle: "Pinakabagong Tweets",
+    news1Date: "ABR 7 2025",
+    news1Category: "Pahayag sa Press",
+    news1Title: "Inanunsyo ni Arthur Dixon ang Kanyang Kandidatura para sa Kongreso sa CA-34",
+    news1Text: "Si Arthur Dixon, isang 28-taong-gulang na Black vegan chef at habambuhay na residente ng CA-34, ay inanunsyo ang kanyang kandidatura para sa Kongreso. Nakaugat sa mga dekada ng grassroots activism at hinubog ng kanyang sariling karanasan sa kawalan ng tirahan, si Dixon ay humakbang upang dalhin ang pamumunong batay sa komunidad sa Washington. Ang kanyang kampanya ay tututok sa mga pangangailangan ng mga nagtatrabahong pamilya, ipaglalaban ang Universal Basic Income, hustisya sa kapaligiran, at pantay na edukasyon, at makipaglaban para sa isang gobyerno na tunay na gumagana para sa lahat.",
+    news1ReadMore: "Magbasa Pa",
+    news2Date: "ABR 10 2025",
+    news2Category: "Pahayag sa Press",
+    news2Title: "Inilunsad ni Arthur Dixon ang UBI Pilot Program para sa mga Pamilya sa CA-34",
+    news2Text: "Ngayong araw, ipinahayag ni Arthur Dixon ang isang makabagong inisyatiba: sa panahon ng kanyang kampanya, magbibigay siya ng $1,000/buwan sa isang pamilya mula sa bawat sona sa CA-34. “Ito ay isang hakbang patungo sa hustisya sa ekonomiya,” sabi ni Dixon. Kung mahahalal, plano niyang palawakin ito sa isang 1,000-pamilya na pilot program para sa Universal Basic Income, na tinitiyak na walang maiiwan sa CA-34.",
+    news2ReadMore: "Magbasa Pa",
+    news3Date: "ABR 15 2025",
+    news3Category: "Pahayag sa Press",
+    news3Title: "Si Arthur Dixon ay Nangunguna sa Green New Deal para sa CA-34",
+    news3Text: "Si Arthur Dixon ay naglatag ng isang matapang na pananaw para sa isang Green New Deal sa CA-34, na nakatuon sa mga napapanatiling trabaho at mga inisyatibong zero-waste. “Hindi na makakapaghintay ang ating planeta,” ipinahayag ni Dixon, na binigyang-diin ang pangangailangan para sa malinis na enerhiya at hustisya sa kapaligiran na pinamumunuan ng komunidad.",
+    news3ReadMore: "Magbasa Pa",
+    news4Date: "ABR 20 2025",
+    news4Category: "Pahayag sa Press",
+    news4Title: "Itinataguyod ni Arthur Dixon ang Garantisadong Pabahay at Tulong sa Renta",
+    news4Text: "Sa gitna ng tumataas na gastos sa pabahay, si Arthur Dixon ay nagtataguyod ng garantisadong pabahay at tulong sa renta sa CA-34. Ang kanyang plano ay kasama ang pagtatakda ng limitasyon sa renta at proteksyon sa mga nangungupahan upang matiyak na ang mga pamilya ay maaaring umunlad sa kanilang mga tahanan nang walang takot sa pagpapaalis.",
+    news4ReadMore: "Magbasa Pa",
+    news5Date: "ABR 25 2025",
+    news5Category: "Pahayag sa Press",
+    news5Title: "Hiniling ni Arthur Dixon ang Pag-alis ng ICE",
+    news5Text: "Si Arthur Dixon ay kumuha ng matapang na paninindigan sa hustisya sa imigrasyon, na hiniling ang pag-alis ng ICE. “Kailangan natin ng isang sistema na nagpapalakas sa ating mga kapitbahay na imigrante, hindi isang sistema na naghihiwalay ng mga pamilya,” sabi ni Dixon, na nagtataguyod ng mga repormang puno ng habag at nakatuon sa komunidad.",
+    news5ReadMore: "Magbasa Pa",
+    galleryTitle: "Gallery",
+    videosTitle: "Mga Talumpati at Video",
+    donateTitle: "Suportahan ang Kilusan",
+    donateTextH3: "Si Arthur para sa Buong CA-34",
+    donateTextP: "Si Arthur Dixon ay tumatakbo para sa Kongreso sa ika-34 na Congressional District ng California. Sino siya? Ano ang kanyang ipinaglalaban?",
+    learnMoreDonate: "Matuto Pa",
+    supportText: "Susuportahan mo ba ang aming gawain? Isaalang-alang ang pag-donate!",
+    shopTitle: "Tindahan",
+    shopTshirt: "T-shirt ng Kampanya",
+    shopTshirtPrice: "$25.00",
+    buyTshirt: "Bumili Ngayon",
+    shopHat: "Sombrero ng Kampanya",
+    shopHatPrice: "$20.00",
+    buyHat: "Bumili Ngayon",
+    shopSticker: "Sticker ng Kampanya",
+    shopStickerPrice: "$5.00",
+    buySticker: "Bumili Ngayon",
+    shopTote: "Tote Bag ng Kampanya",
+    shopTotePrice: "$15.00",
+    buyTote: "Bumili Ngayon",
+    joinUsTitle: "Sumali sa Amin!",
+    joinFormTitle: "Sumali sa Amin!",
+    consentLabel: "Sa pamamagitan ng pag-check sa kahon na ito, sumasang-ayon ka na tumanggap ng mga mensahe mula sa amin. Maaaring mag-apply ang mga rate ng mensahe at data.",
+    submitBtn: "Ipasa",
+    subscribeBtn: "Mag-subscribe",
+    footerText: "© 2025 Arthur Dixon para sa Kongreso | info@arthur2026.com | info@arthurdixonforcongress.com | info@arthur4congress.com",
+    disclaimerText: "Binayaran ng Arthur Dixon para sa Kongreso",
+    floatingDonateBtn: "Mag-donate",
+    chatbotText: "Kumusta! Paano ko matutulungan ka ngayon?",
+    chatbotContact: "Makipag-ugnayan",
+    chatbotClose: "Isara"
+  }
+};
+
+function updateLanguage(lang) {
+  if (!translations[lang]) {
+    lang = 'en';
+  }
+  document.querySelector('#hero-title').innerHTML = translations[lang].heroTitle;
+  document.querySelector('#hero-subtitle').innerHTML = translations[lang].heroSubtitle;
+  document.querySelector('#hero-donate').textContent = translations[lang].donateButton;
+  document.querySelector('#about-title').textContent = translations[lang].aboutTitle;
+  document.querySelector('#about-text').textContent = translations[lang].aboutText;
+  document.querySelector('#vision-btn').textContent = translations[lang].visionBtn;
+  document.querySelector('#support-btn').textContent = translations[lang].supportBtn;
+  document.querySelector('#join-btn').textContent = translations[lang].joinBtn;
+  document.querySelector('#platform-title').textContent = translations[lang].platformTitle;
+  document.querySelector('#ubi-title').textContent = translations[lang].ubiTitle;
+  document.querySelector('#ubi-text').textContent = translations[lang].ubiText;
+  document.querySelector('#green-title').textContent = translations[lang].greenTitle;
+  document.querySelector('#green-text').textContent = translations[lang].greenText;
+  document.querySelector('#rent-title').textContent = translations[lang].rentTitle;
+  document.querySelector('#rent-text').textContent = translations[lang].rentText;
+  document.querySelector('#health-title').textContent = translations[lang].healthTitle;
+  document.querySelector('#health-text').textContent = translations[lang].healthText;
+  document.querySelector('#edu-title').textContent = translations[lang].eduTitle;
+  document.querySelector('#edu-text').textContent = translations[lang].eduText;
+  document.querySelector('#justice-title').textContent = translations[lang].justiceTitle;
+  document.querySelector('#justice-text').textContent = translations[lang].justiceText;
+  document.querySelector('#events-title').textContent = translations[lang].eventsTitle;
+  document.querySelector('#event1-title').textContent = translations[lang].event1Title;
+  document.querySelector('#event1-date').textContent = translations[lang].event1Date;
+  document.querySelector('#event2-title').textContent = translations[lang].event2Title;
+  document.querySelector('#event2-date').textContent = translations[lang].event2Date;
+  document.querySelector('#event3-title').textContent = translations[lang].event3Title;
+  document.querySelector('#event3-date').textContent = translations[lang].event3Date;
+  document.querySelector('#map-title').textContent = translations[lang].mapTitle;
+  document.querySelector('#district-title').textContent = translations[lang].districtTitle;
+  document.querySelector('#learn-more-btn').textContent = translations[lang].learnMoreBtn;
+  document.querySelector('#news-title').textContent = translations[lang].newsTitle;
+  document.querySelector('#tweets-title').textContent = translations[lang].tweetsTitle;
+  document.querySelector('#news1-date').textContent = translations[lang].news1Date;
+  document.querySelector('#news1-category').textContent = translations[lang].news1Category;
+  document.querySelector('#news1-title').textContent = translations[lang].news1Title;
+  document.querySelector('#news1-text').textContent = translations[lang].news1Text;
+  document.querySelector('#news1-read-more').textContent = translations[lang].news1ReadMore;
+  document.querySelector('#news2-date').textContent = translations[lang].news2Date;
+  document.querySelector('#news2-category').textContent = translations[lang].news2Category;
+  document.querySelector('#news2-title').textContent = translations[lang].news2Title;
+  document.querySelector('#news2-text').textContent = translations[lang].news2Text;
+  document.querySelector('#news2-read-more').textContent = translations[lang].news2ReadMore;
+  document.querySelector('#news3-date').textContent = translations[lang].news3Date;
+  document.querySelector('#news3-category').textContent = translations[lang].news3Category;
+  document.querySelector('#news3-title').textContent = translations[lang].news3Title;
+  document.querySelector('#news3-text').textContent = translations[lang].news3Text;
+  document.querySelector('#news3-read-more').textContent = translations[lang].news3ReadMore;
+  document.querySelector('#news4-date').textContent = translations[lang].news4Date;
+  document.querySelector('#news4-category').textContent = translations[lang].news4Category;
+  document.querySelector('#news4-title').textContent = translations[lang].news4Title;
+  document.querySelector('#news4-text').textContent = translations[lang].news4Text;
+  document.querySelector('#news4-read-more').textContent = translations[lang].news4ReadMore;
+  document.querySelector('#news5-date').textContent = translations[lang].news5Date;
+  document.querySelector('#news5-category').textContent = translations[lang].news5Category;
+  document.querySelector('#news5-title').textContent = translations[lang].news5Title;
+  document.querySelector('#news5-text').textContent = translations[lang].news5Text;
+  document.querySelector('#news5-read-more').textContent = translations[lang].news5ReadMore;
+  document.querySelector('#gallery-title').textContent = translations[lang].galleryTitle;
+  document.querySelector('#videos-title').textContent = translations[lang].videosTitle;
+  document.querySelector('#donate-title').textContent = translations[lang].donateTitle;
+  document.querySelector('#donate-text-h3').textContent = translations[lang].donateTextH3;
+  document.querySelector('#donate-text-p').textContent = translations[lang].donateTextP;
+  document.querySelector('#learn-more-donate').textContent = translations[lang].learnMoreDonate;
+  document.querySelector('#support-text').textContent = translations[lang].supportText;
+  document.querySelector('#shop-title').textContent = translations[lang].shopTitle;
+  document.querySelector('#shop-tshirt').textContent = translations[lang].shopTshirt;
+  document.querySelector('#shop-tshirt-price').textContent = translations[lang].shopTshirtPrice;
+  document.querySelector('#buy-tshirt').textContent = translations[lang].buyTshirt;
+  document.querySelector('#shop-hat').textContent = translations[lang].shopHat;
+  document.querySelector('#shop-hat-price').textContent = translations[lang].shopHatPrice;
+  document.querySelector('#buy-hat').textContent = translations[lang].buyHat;
+  document.querySelector('#shop-sticker').textContent = translations[lang].shopSticker;
+  document.querySelector('#shop-sticker-price').textContent = translations[lang].shopStickerPrice;
+  document.querySelector('#buy-sticker').textContent = translations[lang].buySticker;
+  document.querySelector('#shop-tote').textContent = translations[lang].shopTote;
+  document.querySelector('#shop-tote-price').textContent = translations[lang].shopTotePrice;
+  document.querySelector('#buy-tote').textContent = translations[lang].buyTote;
+  document.querySelector('#join-us-title').textContent = translations[lang].joinUsTitle;
+  document.querySelector('#join-form-title').textContent = translations[lang].joinFormTitle;
+  document.querySelector('#consent-label').textContent = translations[lang].consentLabel;
+  document.querySelector('#submit-btn').textContent = translations[lang].submitBtn;
+  document.querySelector('#subscribe-btn').textContent = translations[lang].subscribeBtn;
+  document.querySelector('#footer-text').textContent = translations[lang].footerText;
+  document.querySelector('#disclaimer-text').textContent = translations[lang].disclaimerText;
+  document.querySelector('#floating-donate-btn').textContent = translations[lang].floatingDonateBtn;
+  document.querySelector('#chatbot-text').textContent = translations[lang].chatbotText;
+  document.querySelector('#chatbot-contact').textContent = translations[lang].chatbotContact;
+  document.querySelector('#chatbot-close').textContent = translations[lang].chatbotClose;
+}
+
+const languageToggle = document.querySelector('#language-toggle');
+languageToggle.addEventListener('change', (e) => {
+  const lang = e.target.value;
+  document.documentElement.lang = lang;
+  updateLanguage(lang);
+});
+
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      localStorage.setItem('darkMode', isDark);
+    });
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    const hamburger = document.querySelector('.hamburger');
+    const navUl = document.querySelector('nav ul');
+    hamburger.addEventListener('click', () => {
+      navUl.classList.toggle('show');
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('show');
+      });
+    });
+
+    var aboutSwiper = new Swiper('#about .swiper-container', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 3000,
+      },
+    });
+
+    var newsSwiper = new Swiper('.news-swiper', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 10000,
+      },
+    });
+
+    var shopSwiper = new Swiper('.shop-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    const sections = document.querySelectorAll('.section-animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    document.querySelector('footer button').addEventListener('click', () => {
+      alert('Thank you for subscribing!');
+    });
+
+    const donations = 500;
+    const goal = 50000;
+    const percentage = (donations / goal) * 100;
+    document.querySelector('.progress').style.width = percentage + '%';
+    document.querySelector('.progress-text').textContent = percentage.toFixed(2) + '% of Goal ($' + donations + ' / $' + goal + ')';
+
+    const chatbotToggle = document.querySelector('.chatbot-toggle');
+    const chatbot = document.querySelector('.chatbot');
+    chatbotToggle.addEventListener('click', () => {
+      chatbot.classList.toggle('active');
+    });
+
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
+
+
+
