@@ -184,12 +184,9 @@
       align-items: center;
       text-align: center;
       color: #fff;
-      overflow: hidden; /* Already present, prevents overflow */
+      overflow: hidden;
       background: linear-gradient(135deg, rgba(0,77,64,0.8), rgba(46,125,50,0.8));
-      max-width: 100%; /* Prevent exceeding viewport width */
-      box-sizing: border-box; /* Include padding in width */
-    }  
-    
+    }
 
     #hero video {
       position: absolute;
@@ -201,8 +198,6 @@
       z-index: -1;
       opacity: 0.9;
       filter: brightness(0.8);
-      max-width: 100%; /* Prevent video from exceeding viewport */
-      overflow: hidden; /* Prevent video overflow */
     }
 
 
