@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">  <meta name="description" content="Arthur Dixon Fr CA-34 - The People’s Campaign for Bold Progressive Change">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arthur Dixon Fr CA-34 - The People’s Campaign for Bold Progressive Change">
   <meta property="og:title" content="">
   <meta property="og:description" content="The People’s Campaign for Bold Progressive Change">
   <meta property="og:image" content="https://example.com/images/campaign-logo.png">
@@ -20,8 +21,6 @@
       box-sizing: border-box;
       font-family: 'Roboto', sans-serif;s
       scroll-behavior: smooth;
-      max-width: 100%; /* Prevent any element from exceeding viewport width */
-      overflow-x: hidden; /* Prevent horizontal overflow */
     }
     img {
     border: 5px solid #FFD700;
@@ -62,7 +61,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
-      height: 100px;
+      height: 80px;
     }
 
     .dark-mode-toggle {
@@ -1636,7 +1635,7 @@
   </nav>
 
   <section id="hero" class="section-animate">
-    <video id="hero-video" autoplay muted loop playsinline>
+    <video autoplay muted loop poster="">
       <source src="https://videos.pexels.com/video-files/8782951/8782951-hd_1920_1080_30fps.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -1644,7 +1643,7 @@
     <p id="hero-subtitle">Join Arthur Dixon’s <span style="color: #FFD700;">Grassroots Movement</span> for a better <span style="color: #FFD700;">Los Angeles</span></p>
     <a href="#donate" class="btn" id="hero-donate">Donate Now</a>
   </section>
-  
+
   <section id="about" class="section-animate">
     <h2 id="about-title">Meet Arthur</h2>
     <div class="swiper-container">
@@ -2791,7 +2790,19 @@ languageToggle.addEventListener('change', (e) => {
       },
     });
 
-  
+    var newsSwiper = new Swiper('.news-swiper', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 10000,
+      },
+    });
 
     var shopSwiper = new Swiper('.shop-swiper', {
       slidesPerView: 'auto',
@@ -2846,8 +2857,6 @@ languageToggle.addEventListener('change', (e) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
-  
- 
 </body>
 </html>
 
