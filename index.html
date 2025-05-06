@@ -2857,6 +2857,15 @@ languageToggle.addEventListener('change', (e) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var video = document.getElementById('hero-video');
+      video.play().catch(function(error) {
+        console.log("Autoplay failed: ", error);
+      });
+    });
+  </script>
 </body>
 </html>
 
