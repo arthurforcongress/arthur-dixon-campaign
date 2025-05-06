@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Arthur Dixon Fr CA-34 - The People’s Campaign for Bold Progressive Change">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">  <meta name="description" content="Arthur Dixon Fr CA-34 - The People’s Campaign for Bold Progressive Change">
   <meta property="og:title" content="">
   <meta property="og:description" content="The People’s Campaign for Bold Progressive Change">
   <meta property="og:image" content="https://example.com/images/campaign-logo.png">
@@ -21,6 +20,8 @@
       box-sizing: border-box;
       font-family: 'Roboto', sans-serif;s
       scroll-behavior: smooth;
+      max-width: 100%; /* Prevent any element from exceeding viewport width */
+      overflow-x: hidden; /* Prevent horizontal overflow */
     }
     img {
     border: 5px solid #FFD700;
@@ -183,9 +184,12 @@
       align-items: center;
       text-align: center;
       color: #fff;
-      overflow: hidden;
+      overflow: hidden; /* Already present, prevents overflow */
       background: linear-gradient(135deg, rgba(0,77,64,0.8), rgba(46,125,50,0.8));
-    }
+      max-width: 100%; /* Prevent exceeding viewport width */
+      box-sizing: border-box; /* Include padding in width */
+    }  
+    
 
     #hero video {
       position: absolute;
@@ -197,6 +201,28 @@
       z-index: -1;
       opacity: 0.9;
       filter: brightness(0.8);
+      max-width: 100%; /* Prevent video from exceeding viewport */
+      overflow: hidden; /* Prevent video overflow */
+    }
+
+    .swiper-container,
+    .news-swiper,
+    .shop-swiper {
+      max-width: 100%;
+      overflow: hidden; /* Prevent Swiper overflow */
+    }
+
+    .swiper-wrapper,
+    .swiper-slide {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    img,
+    iframe {
+      max-width: 100%; /* Ensure images and iframes don’t exceed viewport */
+      height: auto;
+      display: block; /* Prevent inline-block spacing issues */
     }
 
     #hero h2 {
