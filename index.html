@@ -1634,7 +1634,6 @@
     padding: 0.6rem;
     font-size: 1rem;
   }
-
       .floating-donate .btn {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
@@ -2049,7 +2048,7 @@
       </div>
       <div class="join-form">
         <h3 id="join-form-title">Join Us!</h3>
-        <form id="join-form">
+        <form id="join-form" action="https://formspree.io/f/xyzwpedd" method="POST">
           <label for="name" id="name-label">Name</label>
           <input type="text" id="name" name="name" required>
         
@@ -2086,8 +2085,10 @@
       <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
     </div>
     <div class="newsletter">
-      <input type="email" placeholder="Join our newsletter">
-      <button id="subscribe-btn">Subscribe</button>
+      <form action="https://formspree.io/f/xyzwpedd" method="POST">
+        <input type="email" name="email" placeholder="Join our newsletter" required>
+        <button type="submit" id="subscribe-btn">Subscribe</button>
+      </form>
     </div>
     <p id="footer-text">© 2025 Arthur Dixon for Congress | <a href="mailto:info@arthur2026.com">info@arthur2026.com</a> | <a href="mailto:info@arthurdixonforcongress.com">info@arthurdixonforcongress.com</a> | <a href="mailto:info@arthur4congress.com">info@arthur4congress.com</a></p>
     <div class="disclaimer">
