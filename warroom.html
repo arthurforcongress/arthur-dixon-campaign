@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arthur Dixon War Room - CA-34 Campaign Dashboard">
+    <meta property="og:title" content="Arthur Dixon War Room | CA-34">
+    <meta property="og:description" content="Campaign dashboard for Arthur Dixon’s CA-34 run">
+    <meta property="og:image" content="https://www.arthur4congress.com/images/campaign-logo.png">
+    <meta property="og:url" content="https://www.arthur4congress.com/warroom.html">
+    <meta property="og:type" content="website">
+    <title>Arthur Dixon War Room | CA-34</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/grapesjs@0.17.29/dist/grapesjs.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/grapesjs@0.17.29/dist/css/grapes.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #fff;
+            color: #2E7D32;
+            font-family: 'Poppins', sans-serif;
+        }
+        .dark-mode body {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero {
+            background: linear-gradient(145deg, #2E7D32 30%, #2E7D32 70%);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
+            margin-bottom: 2rem;
+        }
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #1a4c44 20%, #0a3b34 80%);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #FFC107;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+        .hero p {
+            color: #fff;
+            font-size: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        .dark-mode .hero p {
+            color: #e0e0e0;
+        }
+        .quick-links {
+            background: #e0e0e0;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .dark-mode .quick-links {
+            background: #2a2a2a;
+        }
+        .quick-links h3 {
+            color: #2E7D32;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .dark-mode .quick-links h3 {
+            color: #FFC107;
+        }
+        .quick-links a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        .dark-mode .quick-links a {
+            color: #FFC107;
+        }
+        .quick-links a:hover {
+            color: #003366;
+        }
+        .dark-mode .quick-links a:hover {
+            color: #f59e0b;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            justify-content: center;
+            overflow-x: auto;
+            flex-wrap: nowrap;
+        }
+        .tab {
+            background: #2E7D32;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+        .dark-mode .tab {
+            background: #1a4c44;
+        }
+        .tab.active, .tab:hover {
+            background: #FFC107;
+            color: #2E7D32;
+        }
+        .dark-mode .tab.active, .dark-mode .tab:hover {
+            background: #f59e0b;
+            color: #1a4c44;
+        }
+        .metric-box {
+            background: #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .dark-mode .metric-box {
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+        .metric-box:hover {
+            transform: translateY(-5px);
+        }
+        button {
+            background: #FFC107;
+            color: #2E7D32;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background: #003366;
+            color: #fff;
+        }
+        input, select, textarea {
+            background: #fff;
+            color: #2E7D32;
+            border: 1px solid #2E7D32;
+            border-radius: 8px;
+            padding: 8px;
+            width: 100%;
+        }
+        .dark-mode input, .dark-mode select, .dark-mode textarea {
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #FFC107;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+        }
+        .dark-mode .login-container {
+            background: #2a2a2a;
+        }
+        .login-container h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #2E7D32;
+            margin-bottom: 1rem;
+        }
+        .dark-mode .login-container h2 {
+            color: #FFC107;
+        }
+        .login-error {
+            color: red;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .countdown-container {
+            text-align: center;
+            margin: 1rem 0;
+            padding: 0.5rem;
+            background: #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dark-mode .countdown-container {
+            background: #2a2a2a;
+        }
+        .countdown {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2E7D32;
+        }
+        .dark-mode .countdown {
+            color: #FFC107;
+        }
+        .countdown-container p {
+            font-size: 1rem;
+            color: #2E7D32;
+        }
+        .dark-mode .countdown-container p {
+            color: #FFC107;
+        }
+        .countdown span {
+            display: inline-block;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .progress-ring {
+            margin: 0.5rem auto;
+        }
+        .map-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        .map-container iframe {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+        }
+        .activity-feed {
+            margin: 2rem 0;
+            background: #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+        }
+        .dark-mode .activity-feed {
+            background: #2a2a2a;
+        }
+        .fundraising-bar {
+            margin: 2rem 0;
+            background: #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+        }
+        .dark-mode .fundraising-bar {
+            background: #2a2a2a;
+        }
+        .fundraising-bar progress {
+            width: 100%;
+            height: 20px;
+            border-radius: 4px;
+            background: #fff;
+        }
+        .fundraising-bar progress::-webkit-progress-bar {
+            background: #fff;
+            border-radius: 4px;
+        }
+        .fundraising-bar progress::-webkit-progress-value {
+            background: #2E7D32;
+            border-radius: 4px;
+        }
+        .dark-mode .fundraising-bar progress::-webkit-progress-value {
+            background: #FFC107;
+        }
+        .fundraising-bar progress::-moz-progress-bar {
+            background: #2E7D32;
+            border-radius: 4px;
+        }
+        .dark-mode .fundraising-bar progress::-moz-progress-bar {
+            background: #FFC107;
+        }
+        .cta-button {
+            display: block;
+            margin: 1rem auto;
+            max-width: 200px;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #2E7D32;
+            padding: 8px;
+            text-align: left;
+        }
+        .dark-mode th, .dark-mode td {
+            border: 1px solid #FFC107;
+        }
+        th {
+            background: #2E7D32;
+            color: #fff;
+        }
+        .dark-mode th {
+            background: #1a4c44;
+        }
+    </style>
+</head>
+<body>
+    <div id="login" class="login-container">
+        <h2>War Room Login</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <div class="flex justify-center my-2">
+            <label class="flex items-center">
+                <input type="checkbox" id="show-password" class="mr-2"> Show Password
+            </label>
+        </div>
+        <button onclick="handleLogin()">Login</button>
+        <p id="login-error" class="login-error hidden">Invalid username or password. Please try again.</p>
+        <button id="reset-error" class="hidden mt-2 bg-gray-300 text-[#2E7D32] hover:bg-gray-400" onclick="resetLogin()">Try Again</button>
+        <button id="reset-password" class="mt-2 bg-gray-300 text-[#2E7D32] hover:bg-gray-400" onclick="alert('Password reset is not available for this demo.')">Reset Password</button>
+    </div>
+    <div id="warroom" class="hidden">
+        <div class="container">
+            <div class="hero">
+                <h1>🛰️ Arthur Dixon’s Campaign War Room</h1>
+                <p>Powering CA-34's Bold Progressive Revolution</p>
+            </div>
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <a href="https://secure.actblue.com/donate/dixonforcongress">Donate Now</a>
+                <a href="https://www.arthur4congress.com/#volunteer">Join Us</a>
+                <a href="https://www.arthur4congress.com/#events">Events</a>
+                <a href="https://www.arthur4congress.com/#about">Bio</a>
+                <a href="https://ballotpedia.org/Arthur_Dixon">Ballotpedia</a>
+            </div>
+            <div class="countdown-container">
+                <div class="mb-4">
+                    <h3 class="countdown">🗳️ <span id="primary-countdown"></span> 🗳️</h3>
+                    <p>Until Primary Election</p>
+                    <svg class="progress-ring" width="80" height="80">
+                        <circle stroke="#2E7D32" stroke-width="6" fill="transparent" r="32" cx="40" cy="40" id="primary-progress-circle"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="countdown">🗳️ <span id="general-countdown"></span> 🗳️</h3>
+                    <p>Until General Election</p>
+                    <svg class="progress-ring" width="80" height="80">
+                        <circle stroke="#2E7D32" stroke-width="6" fill="transparent" r="32" cx="40" cy="40" id="general-progress-circle"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="tabs">
+                <div class="tab active" onclick="showTab('home')">🏠 Home</div>
+                <div class="tab" onclick="showTab('email')">📨 Email Ops</div>
+                <div class="tab" onclick="showTab('sms')">💬 SMS Ops</div>
+                <div class="tab" onclick="showTab('calls')">📞 Calls</div>
+                <div class="tab" onclick="showTab('contacts')">📇 Contacts</div>
+                <div class="tab" onclick="showTab('analytics')">📊 Analytics</div>
+                <div class="tab" onclick="showTab('logs')">📁 Logs</div>
+                <div class="tab" onclick="showTab('notes')">🧠 Notes</div>
+            </div>
+            <div id="home" class="tab-content">
+                <h2 class="text-2xl font-semibold">📡 Command Center</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+                    <div class="metric-box">
+                        <h3>📬 Emails Sent</h3>
+                        <h2 id="emails-sent">1,447</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>💬 SMS Sent</h3>
+                        <h2 id="sms-sent">0</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>📞 Calls Made</h3>
+                        <h2 id="calls-made">103</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>🔥 Open Rate</h3>
+                        <h2 id="open-rate">44.1%</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>💸 Donations</h3>
+                        <h2 id="donations">$5,760</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>📉 Bounce Rate</h3>
+                        <h2 id="bounce-rate">0.7%</h2>
+                    </div>
+                </div>
+                <h2 class="text-xl font-semibold mt-4">Campaign Platform</h2>
+                <ul class="list-disc pl-5">
+                    <li><strong>Guaranteed Housing</strong>: Ensuring every resident of CA-34 has access to safe, affordable housing.</li>
+                    <li><strong>Universal Basic Income</strong>: Advocating for a UBI to provide economic security and dignity for all.</li>
+                    <li><strong>Abolish ICE</strong>: Pushing for humane immigration policies and the dissolution of ICE.</li>
+                    <li><strong>Green New Deal</strong>: Championing bold climate action to create jobs and protect our planet.</li>
+                </ul>
+                <button class="cta-button mx-auto block" onclick="window.location.href='https://www.arthur4congress.com/#platform'">Read Full Platform</button>
+                <h2 class="text-xl font-semibold mt-4">Recent Activity</h2>
+                <div class="activity-feed">
+                    <ul class="list-disc pl-5" id="recent-activity">
+                        <li>Sent 500 emails for Boyle Heights Launch (June 13, 2025)</li>
+                        <li>Added Rent Relief Rally to events (June 12, 2025)</li>
+                        <li>Imported 200 new contacts (June 11, 2025)</li>
+                        <li>Received $100 donation via ActBlue (June 10, 2025)</li>
+                        <li>Sent 300 SMS for Canvassing Day (June 9, 2025)</li>
+                    </ul>
+                </div>
+                <h2 class="text-xl font-semibold mt-4">CA-34 District Map</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105831.99281477405!2d-118.226716!3d34.079836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2cea2c497db3d%3A0xfab32be9dee6147a!2sCalifornia%27s%2034th%20Congressional%20District%2C%20CA!5e0!3m2!1sen!2us!4v1697051234567!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <h2 class="text-xl font-semibold mt-4">Upcoming Events</h2>
+                <ul class="list-disc pl-5" id="upcoming-events">
+                    <li><strong>Boyle Heights Launch</strong>: June 14th, 2025 | 11:00 AM | Mariachi Plaza</li>
+                    <li><strong>Canvassing Day</strong>: June 15th, 2025 | 10:00 AM | Wilshire & Normandie</li>
+                    <li><strong>Rent Relief Rally</strong>: June 16th, 2025 | 6:00 PM | Echo Park</li>
+                </ul>
+                <h2 class="text-xl font-semibold mt-4">Fundraising Progress</h2>
+                <div class="fundraising-bar">
+                    <p>Raised: <span id="fundraising-current">$5,760</span> / Goal: <span id="fundraising-goal">$100,000</span> (<span id="fundraising-percent">5.76%</span>)</p>
+                    <progress id="fundraising-progress" value="5760" max="100000"></progress>
+                </div>
+            </div>
+            <div id="email" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold">📨 Email Campaign Hub</h2>
+                <select id="contact-list" class="my-2">
+                    <option value="">Select Contact List</option>
+                </select>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+                    <div>
+                        <label>Subject A</label>
+                        <input type="text" id="email-subject-a" placeholder="Subject Line A" class="my-2">
+                        <label>Preheader A</label>
+                        <input type="text" id="email-preheader-a" placeholder="Preheader Text A" class="my-2">
+                    </div>
+                    <div>
+                        <label>Subject B (A/B Test)</label>
+                        <input type="text" id="email-subject-b" placeholder="Subject Line B" class="my-2">
+                        <label>Preheader B</label>
+                        <input type="text" id="email-preheader-b" placeholder="Preheader Text B" class="my-2">
+                    </div>
+                </div>
+                <input type="file" id="email-contacts" accept=".csv" class="my-2">
+                <div class="flex gap-4 my-4">
+                    <button onclick="previewEmail()">👀 Preview</button>
+                    <button onclick="testEmail()">🧪 Test Send</button>
+                    <button onclick="launchEmailCampaign()">🚀 Launch Campaign</button>
+                </div>
+                <h3 class="text-xl font-semibold mt-4">Email Editor (Drag & Drop)</h3>
+                <div id="grapesjs-editor" style="height: 500px; border-radius: 8px;"></div>
+                <h3 class="text-xl font-semibold mt-4">Past Email Campaigns</h3>
+                <table class="w-full text-left" id="email-campaign-table">
+                    <tr><th>Name</th><th>Date</th><th>Recipients</th><th>Open Rate</th><th>Click Rate</th></tr>
+                </table>
+            </div>
+            <div id="sms" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold">💬 SMS Campaign Hub</h2>
+                <select id="sms-contact-list" class="my-2">
+                    <option value="">Select Contact List</option>
+                </select>
+                <textarea id="sms-message" rows="4" class="my-2" placeholder="Hi {{FirstName}}, join Arthur Dixon’s fight for CA-34! RSVP: https://www.arthur4congress.com" maxlength="160"></textarea>
+                <p id="sms-char-count" class="text-sm">0/160 characters</p>
+                <input type="file" id="sms-contacts" accept=".csv" class="my-2">
+                <button onclick="launchSmsCampaign()">🚀 Launch SMS Blast</button>
+                <p class="text-blue-600 dark-mode:text-blue-300 mt-2">SMS reply tracking coming in Phase 2.1</p>
+                <h3 class="text-xl font-semibold mt-4">Past SMS Campaigns</h3>
+                <table class="w-full text-left" id="sms-campaign-table">
+                    <tr><th>Name</th><th>Date</th><th>Recipients</th><th>Delivery Rate</th></tr>
+                </table>
+            </div>
+            <div id="calls" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold">📞 Autodialer Dashboard</h2>
+                <div class="metric-box my-4">
+                    <h3>Current Contact</h3>
+                    <p id="current-contact">None</p>
+                    <p id="contact-phone"></p>
+                    <p id="contact-status"></p>
+                </div>
+                <div class="flex gap-4 my-4">
+                    <button onclick="dialNext()">📞 Dial</button>
+                    <button onclick="skipContact()">⏭️ Skip</button>
+                    <button onclick="logCallOutcome()">💾 Log Outcome</button>
+                </div>
+                <div id="call-outcome" class="hidden my-4">
+                    <label>Outcome</label>
+                    <select id="call-outcome-type" class="my-2">
+                        <option value="answered">Answered</option>
+                        <option value="voicemail">Voicemail</option>
+                        <option value="no-answer">No Answer</option>
+                    </select>
+                    <label>Pitch Given</label>
+                    <input type="checkbox" id="call-pitch" class="my-2">
+                    <label>Donation Amount</label>
+                    <input type="number" id="call-donation" min="0" class="my-2" placeholder="$0">
+                    <label>Volunteer Signup</label>
+                    <input type="checkbox" id="call-signup" class="my-2">
+                    <button onclick="saveCallOutcome()">✅ Save</button>
+                </div>
+                <input type="file" id="call-contacts" accept=".csv" class="my-2">
+                <button onclick="importCallContacts()">📤 Import Call List</button>
+                <h3 class="text-xl font-semibold mt-4">Call Metrics</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-4">
+                    <div class="metric-box">
+                        <h3>📞 Calls Today</h3>
+                        <h2 id="calls-today">0</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>✅ Answers</h3>
+                        <h2 id="call-answers">0</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>🎤 Pitches</h3>
+                        <h2 id="call-pitches">0</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>💸 Donations</h3>
+                        <h2 id="call-donations">$0</h2>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mt-4">Call Log</h3>
+                <table class="w-full text-left" id="call-log-table">
+                    <tr><th>Name</th><th>Phone</th><th>Outcome</th><th>Pitch</th><th>Donation</th><th>Signup</th><th>Timestamp</th></tr>
+                </table>
+            </div>
+            <div id="contacts" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold">📇 Contact Management</h2>
+                <div id="contacts-table"></div>
+                <input type="file" id="contacts-upload" accept=".csv" class="my-2">
+                <button onclick="importContacts()">📤 Import Contacts</button>
+            </div>
+            <div id="analytics" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold">📊 Campaign Analytics</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-4">
+                    <div class="metric-box">
+                        <h3>📬 Emails Sent</h3>
+                        <h2 id="analytics-emails">0</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>💬 SMS Sent</h3>
+                        <h2 id="analytics-sms">0</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>📞 Calls Made</h3>
+                        <h2 id="analytics-calls">0</h2>
+                    </div>
+                    <div class="metric-box">
+                        <h3>💸 Donations</h3>
+                        <h2 id="analytics-donations">$0</h2>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mt-4">Email Performance</h3>
+                <canvas id="email-chart" style="max-height: 300px;"></canvas>
+                <h3 class="text-xl font-semibold mt-4">SMS Delivery</h3>
+                <canvas id="sms-chart" style="max-height: 300px;"></canvas>
+                <h3 class="text-xl font-semibold mt-4">Call Outcomes</h3>
+                <canvas id="call-chart" style="max-height: 300px;"></canvas>
+                <h3 class="text-xl font-semibold mt-4">Recent Campaigns</h3>
+                <table class="w-full text-left" id="campaign-table">
+                    <tr><th>Type</th><th>Date</th><th>Recipients</th><th>Results</th></tr>
+                </table>
+            </div>
+            <div id="logs" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold">📁 Campaign Logs</h2>
+                <textarea id="logs" rows="10" class="w-full my-2" readonly></textarea>
+            </div>
+            <div id="notes" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold">🧠 Strategy Notes</h2>
+                <textarea id="notes" rows="10" class="w-full my-2"></textarea>
+                <button onclick="saveNotes()">💾 Save Notes</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleLogin() {
+            console.log('Login attempt');
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('login-error');
+            const resetButton = document.getElementById('reset-error');
+            console.log('Username:', username);
+            console.log('Password:', password);
+            if (username === 'admin' && password === 'password123') {
+                console.log('Login successful');
+                document.getElementById('login').classList.add('hidden');
+                document.getElementById('warroom').classList.remove('hidden');
+                error.classList.add('hidden');
+                resetButton.classList.add('hidden');
+                initWarRoom();
+            } else {
+                console.log('Login failed');
+                error.classList.remove('hidden');
+                resetButton.classList.remove('hidden');
+            }
+        }
+
+        function resetLogin() {
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('login-error').classList.add('hidden');
+            document.getElementById('reset-error').classList.add('hidden');
+            document.getElementById('show-password').checked = false;
+            document.getElementById('password').type = 'password';
+        }
+
+        document.getElementById('show-password').addEventListener('change', () => {
+            const passwordField = document.getElementById('password');
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+        });
+
+        function initWarRoom() {
+            const startDate = new Date('2025-06-23T00:00:00');
+            const primaryElectionDay = new Date('2026-06-02T00:00:00');
+            const generalElectionDay = new Date('2026-11-08T00:00:00');
+
+            function updateCountdown(electionDay, countdownId, progressId) {
+                const now = new Date();
+                const timeDiff = electionDay - now;
+                if (timeDiff <= 0) {
+                    document.getElementById(countdownId).textContent = 'Election Day has passed!';
+                    document.getElementById(progressId).style.strokeDasharray = '0, 201';
+                    return;
+                }
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                document.getElementById(countdownId).textContent = 
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                const totalDays = Math.floor((electionDay - startDate) / (1000 * 60 * 60 * 24));
+                const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const progress = ((totalDays - daysLeft) / totalDays) * 201;
+                document.getElementById(progressId).style.strokeDasharray = `${progress}, 201`;
+            }
+
+            function updateCountdowns() {
+                updateCountdown(primaryElectionDay, 'primary-countdown', 'primary-progress-circle');
+                updateCountdown(generalElectionDay, 'general-countdown', 'general-progress-circle');
+            }
+
+            updateCountdowns();
+            setInterval(updateCountdowns, 1000);
+
+            function showTab(tabId) {
+                console.log('Attempting to show tab:', tabId);
+                try {
+                    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+                    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                    const tabContent = document.getElementById(tabId);
+                    if (!tabContent) throw new Error(`Tab ${tabId} not found`);
+                    tabContent.classList.remove('hidden');
+                    const tabButton = document.querySelector(`[onclick="showTab('${tabId}')"]`);
+                    if (tabButton) tabButton.classList.add('active');
+                    console.log('Tab switched to:', tabId);
+                } catch (error) {
+                    console.error('Tab switch error:', error);
+                    alert('Failed to switch tab. Ensure the backend server is running.');
+                }
+            }
+
+            const editor = grapesjs.init({
+                container: '#grapesjs-editor',
+                storageManager: { type: 'none' },
+                panels: { defaults: [] },
+                blockManager: {
+                    blocks: [
+                        { id: 'header', label: 'Header', content: '<h1>Header</h1>' },
+                        { id: 'text', label: 'Text', content: '<p>Text here</p>' },
+                        { id: 'image', label: 'Image', content: '<img src="https://placehold.it/200x200" />' },
+                        { id: 'button', label: 'Button', content: '<a href="#" class="button">Click Me</a>' }
+                    ]
+                }
+            });
+
+            function previewEmail() {
+                const content = editor.getHtml();
+                const subject = document.getElementById('email-subject-a').value;
+                const preheader = document.getElementById('email-preheader-a').value;
+                const previewWindow = window.open('', '_blank');
+                previewWindow.document.write(`
+                    <html>
+                        <head><title>Email Preview</title></head>
+                        <body>
+                            <p><strong>Subject:</strong> ${subject}</p>
+                            <p><strong>Preheader:</strong> ${preheader}</p>
+                            <hr>
+                            ${content}
+                        </body>
+                    </html>
+                `);
+            }
+
+            async function testEmail() {
+                try {
+                    const content = editor.getHtml();
+                    const subject = document.getElementById('email-subject-a').value;
+                    const preheader = document.getElementById('email-preheader-a').value;
+                    const response = await axios.post('http://localhost:8000/test-email', {
+                        subject, preheader, content, recipient: 'test@example.com'
+                    });
+                    alert('✅ Test email sent!');
+                } catch (error) {
+                    alert('❌ Failed to send test email. Ensure the backend server is running.');
+                }
+            }
+
+            async function launchEmailCampaign() {
+                const listId = document.getElementById('contact-list').value;
+                if (!listId) {
+                    alert('Please select a contact list.');
+                    return;
+                }
+                const content = editor.getHtml();
+                const subjectA = document.getElementById('email-subject-a').value;
+                const preheaderA = document.getElementById('email-preheader-a').value;
+                const subjectB = document.getElementById('email-subject-b').value;
+                const preheaderB = document.getElementById('email-preheader-b').value;
+                try {
+                    const campaignResponse = await axios.post('http://localhost:8000/send-campaign', {
+                        type: 'email',
+                        content,
+                        subject_a: subjectA,
+                        preheader_a: preheaderA,
+                        subject_b: subjectB,
+                        preheader_b: preheaderB,
+                        list_id: listId
+                    });
+                    if (campaignResponse.status === 200) {
+                        alert('✅ Email campaign launched!');
+                        fetchRecentActivity();
+                        fetchAnalytics();
+                        fetchEmailCampaigns();
+                    }
+                } catch (error) {
+                    alert('❌ Failed to launch email campaign. Ensure the backend server is running.');
+                }
+            }
+
+            document.getElementById('sms-message').addEventListener('input', () => {
+                const count = document.getElementById('sms-message').value.length;
+                document.getElementById('sms-char-count').textContent = `${count}/160 characters`;
+            });
+
+            async function launchSmsCampaign() {
+                const listId = document.getElementById('sms-contact-list').value;
+                if (!listId) {
+                    alert('Please select a contact list.');
+                    return;
+                }
+                const message = document.getElementById('sms-message').value;
+                try {
+                    const campaignResponse = await axios.post('http://localhost:8000/send-campaign', {
+                        type: 'sms',
+                        message,
+                        list_id: listId
+                    });
+                    if (campaignResponse.status === 200) {
+                        alert('✅ SMS campaign launched!');
+                        fetchRecentActivity();
+                        fetchAnalytics();
+                        fetchSmsCampaigns();
+                    }
+                } catch (error) {
+                    alert('❌ Failed to launch SMS campaign. Ensure the backend server is running.');
+                }
+            }
+
+            let currentContact = null;
+            let callQueue = [];
+
+            async function importCallContacts() {
+                const fileInput = document.getElementById('call-contacts');
+                if (!fileInput.files[0]) {
+                    alert('Please upload a contact CSV.');
+                    return;
+                }
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+                try {
+                    const response = await axios.post('http://localhost:8000/import-call-contacts', formData);
+                    if (response.status === 200) {
+                        callQueue = response.data;
+                        alert('✅ Call list imported!');
+                        dialNext();
+                    }
+                } catch (error) {
+                    alert('❌ Import failed. Ensure the backend server is running.');
+                }
+            }
+
+            function dialNext() {
+                if (callQueue.length === 0) {
+                    document.getElementById('current-contact').textContent = 'No contacts in queue';
+                    document.getElementById('contact-phone').textContent = '';
+                    document.getElementById('contact-status').textContent = '';
+                    return;
+                }
+                currentContact = callQueue.shift();
+                document.getElementById('current-contact').textContent = currentContact.name || 'Friend';
+                document.getElementById('contact-phone').textContent = currentContact.phone || 'N/A';
+                document.getElementById('contact-status').textContent = 'Dialing...';
+                axios.post('http://localhost:8000/dial', { phone: currentContact.phone })
+                    .then(() => {
+                        document.getElementById('contact-status').textContent = 'Connected';
+                        document.getElementById('call-outcome').classList.remove('hidden');
+                    })
+                    .catch(() => {
+                        document.getElementById('contact-status').textContent = 'Failed to dial';
+                    });
+            }
+
+            function skipContact() {
+                if (currentContact) {
+                    callQueue.push(currentContact);
+                }
+                dialNext();
+            }
+
+            function logCallOutcome() {
+                if (!currentContact) return;
+                document.getElementById('call-outcome').classList.remove('hidden');
+            }
+
+            async function saveCallOutcome() {
+                if (!currentContact) return;
+                const outcome = {
+                    name: currentContact.name || 'Unknown',
+                    phone: currentContact.phone,
+                    outcome: document.getElementById('call-outcome-type').value,
+                    pitch: document.getElementById('call-pitch').checked,
+                    donation: parseFloat(document.getElementById('call-donation').value) || 0,
+                    signup: document.getElementById('call-signup').checked,
+                    timestamp: new Date()
+                };
+                try {
+                    await axios.post('http://localhost:8000/save-call', outcome);
+                    document.getElementById('call-outcome').classList.add('hidden');
+                    alert('✅ Call outcome saved!');
+                    fetchRecentActivity();
+                    fetchAnalytics();
+                    fetchCallLog();
+                    updateCallMetrics();
+                    dialNext();
+                } catch (error) {
+                    alert('❌ Failed to save call outcome. Ensure the backend server is running.');
+                }
+            }
+
+            function updateCallMetrics() {
+                axios.get('http://localhost:8000/call-metrics').then(response => {
+                    const data = response.data;
+                    document.getElementById('calls-today').textContent = data.calls_today || 0;
+                    document.getElementById('call-answers').textContent = data.answers || 0;
+                    document.getElementById('call-pitches').textContent = data.pitches || 0;
+                    document.getElementById('call-donations').textContent = `$${data.donations || 0}`;
+                }).catch(error => {
+                    console.error('Failed to update call metrics:', error);
+                });
+            }
+
+            async function fetchAnalytics() {
+                try {
+                    const response = await axios.get('http://localhost:8000/analytics');
+                    const data = response.data;
+                    document.getElementById('emails-sent').textContent = data.total_emails || '1,447';
+                    document.getElementById('sms-sent').textContent = data.total_sms || '0';
+                    document.getElementById('calls-made').textContent = data.total_calls || '103';
+                    document.getElementById('open-rate').textContent = (data.open_rate || 44.1).toFixed(1) + '%';
+                    document.getElementById('donations').textContent = `$${data.total_donations || 5760}`;
+                    document.getElementById('bounce-rate').textContent = (data.bounce_rate || 0.7).toFixed(1) + '%';
+                    const current = data.total_donations || 5760;
+                    const goal = 100000;
+                    const percent = ((current / goal) * 100).toFixed(2);
+                    document.getElementById('fundraising-current').textContent = `$${current}`;
+                    document.getElementById('fundraising-goal').textContent = `$${goal}`;
+                    document.getElementById('fundraising-percent').textContent = `${percent}%`;
+                    document.getElementById('fundraising-progress').value = current;
+                    document.getElementById('analytics-emails').textContent = data.total_emails || '0';
+                    document.getElementById('analytics-sms').textContent = data.total_sms || '0';
+                    document.getElementById('analytics-calls').textContent = data.total_calls || '0';
+                    document.getElementById('analytics-donations').textContent = `$${data.total_donations || 0}`;
+                    new Chart(document.getElementById('email-chart'), {
+                        type: 'pie',
+                        data: {
+                            labels: ['Opened', 'Unopened'],
+                            datasets: [{ data: [data.open_rate || 44.1, 100 - (data.open_rate || 44.1)], backgroundColor: ['#FFC107', '#2E7D32'] }]
+                        },
+                        options: { responsive: true }
+                    });
+                    new Chart(document.getElementById('sms-chart'), {
+                        type: 'pie',
+                        data: {
+                            labels: ['Delivered', 'Failed'],
+                            datasets: [{ data: [data.sms_delivery_rate || 0, 100 - (data.sms_delivery_rate || 0)], backgroundColor: ['#FFC107', '#2E7D32'] }]
+                        },
+                        options: { responsive: true }
+                    });
+                    new Chart(document.getElementById('call-chart'), {
+                        type: 'bar',
+                        data: {
+                            labels: ['Answered', 'Voicemail', 'No Answer'],
+                            datasets: [{ data: [data.call_answers || 0, data.call_voicemails || 0, data.call_no_answers || 0], backgroundColor: '#2E7D32' }]
+                        },
+                        options: { responsive: true }
+                    });
+                    const campaigns = data.recent_campaigns || [];
+                    let table = '<tr><th>Type</th><th>Date</th><th>Recipients</th><th>Results</th></tr>';
+                    campaigns.forEach(c => {
+                        table += `<tr><td>${c.type}</td><td>${new Date(c.date).toLocaleDateString()}</td><td>${c.recipients}</td><td>${c.results}</td></tr>`;
+                    });
+                    document.getElementById('campaign-table').innerHTML = table;
+                } catch (error) {
+                    console.error('Failed to load analytics:', error);
+                }
+            }
+
+            async function fetchRecentActivity() {
+                try {
+                    const response = await axios.get('http://localhost:8000/recent-activity');
+                    const activities = response.data.slice(0, 5);
+                    document.getElementById('recent-activity').innerHTML = activities.map(a => `<li>${a.description} (${new Date(a.timestamp).toLocaleDateString()})</li>`).join('');
+                } catch (error) {
+                    console.error('Failed to load recent activity:', error);
+                }
+            }
+
+            async function fetchEvents() {
+                try {
+                    const response = await axios.get('http://localhost:8000/events');
+                    const events = response.data.slice(0, 3);
+                    document.getElementById('upcoming-events').innerHTML = events.map(e => `<li><strong>${e.title}</strong>: ${e.date} | ${e.time} | ${e.location}</li>`).join('');
+                } catch (error) {
+                    console.error('Failed to load events:', error);
+                }
+            }
+
+            async function fetchContacts() {
+                try {
+                    const response = await axios.get('http://localhost:8000/contacts');
+                    const contacts = response.data;
+                    let table = '<table class="w-full text-left"><tr><th>Name</th><th>Email</th><th>Phone</th></tr>';
+                    contacts.forEach(c => {
+                        table += `<tr><td>${c.name || 'Friend'}</td><td>${c.email || ''}</td><td>${c.phone || ''}</td></tr>`;
+                    });
+                    table += '</table>';
+                    document.getElementById('contacts-table').innerHTML = table;
+                } catch (error) {
+                    alert('Failed to load contacts. Ensure the backend server is running.');
+                }
+            }
+
+            async function importContacts() {
+                const fileInput = document.getElementById('contacts-upload');
+                if (!fileInput.files[0]) {
+                    alert('Please upload a contact CSV.');
+                    return;
+                }
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+                try {
+                    const response = await axios.post('http://localhost:8000/import-contacts', formData);
+                    if (response.status === 200) {
+                        alert('✅ Contacts imported!');
+                        fetchContacts();
+                        fetchRecentActivity();
+                        fetchContactLists();
+                    }
+                } catch (error) {
+                    alert('❌ Import failed. Ensure the backend server is running.');
+                }
+            }
+
+            async function saveNotes() {
+                const notes = document.getElementById('notes').value;
+                try {
+                    await axios.post('http://localhost:8000/save-notes', { notes });
+                    alert('✅ Notes saved!');
+                } catch (error) {
+                    alert('❌ Failed to save notes. Ensure the backend server is running.');
+                }
+            }
+
+            async function fetchLogs() {
+                try {
+                    const response = await axios.get('http://localhost:8000/logs');
+                    document.getElementById('logs').value = response.data.logs.join('\n') || 'No logs found.';
+                } catch (error) {
+                    document.getElementById('logs').value = 'No logs found.';
+                }
+            }
+
+            async function fetchCallLog() {
+                try {
+                    const response = await axios.get('http://localhost:8000/call-log');
+                    const calls = response.data;
+                    let table = '<tr><th>Name</th><th>Phone</th><th>Outcome</th><th>Pitch</th><th>Donation</th><th>Signup</th><th>Timestamp</th></tr>';
+                    calls.forEach(call => {
+                        table += `<tr><td>${call.name || 'Unknown'}</td><td>${call.phone}</td><td>${call.outcome}</td><td>${call.pitch ? 'Yes' : 'No'}</td><td>$${call.donation}</td><td>${call.signup ? 'Yes' : 'No'}</td><td>${new Date(call.timestamp).toLocaleString()}</td></tr>`;
+                    });
+                    document.getElementById('call-log-table').innerHTML = table;
+                } catch (error) {
+                    console.error('Failed to load call log:', error);
+                }
+            }
+
+            async function fetchContactLists() {
+                try {
+                    const response = await axios.get('http://localhost:8000/contact-lists');
+                    const lists = response.data;
+                    const emailSelect = document.getElementById('contact-list');
+                    const smsSelect = document.getElementById('sms-contact-list');
+                    lists.forEach(list => {
+                        const option1 = document.createElement('option');
+                        option1.value = list.id;
+                        option1.textContent = list.name;
+                        emailSelect.appendChild(option1);
+                        const option2 = document.createElement('option');
+                        option2.value = list.id;
+                        option2.textContent = list.name;
+                        smsSelect.appendChild(option2);
+                    });
+                } catch (error) {
+                    console.error('Failed to load contact lists:', error);
+                }
+            }
+
+            async function fetchEmailCampaigns() {
+                try {
+                    const response = await axios.get('http://localhost:8000/email-campaigns');
+                    const campaigns = response.data;
+                    let table = '<tr><th>Name</th><th>Date</th><th>Recipients</th><th>Open Rate</th><th>Click Rate</th></tr>';
+                    campaigns.forEach(campaign => {
+                        table += `<tr><td>${campaign.name}</td><td>${new Date(campaign.date).toLocaleDateString()}</td><td>${campaign.recipients}</td><td>${campaign.open_rate}%</td><td>${campaign.click_rate}%</td></tr>`;
+                    });
+                    document.getElementById('email-campaign-table').innerHTML = table;
+                } catch (error) {
+                    console.error('Failed to load email campaigns:', error);
+                }
+            }
+
+            async function fetchSmsCampaigns() {
+                try {
+                    const response = await axios.get('http://localhost:8000/sms-campaigns');
+                    const campaigns = response.data;
+                    let table = '<tr><th>Name</th><th>Date</th><th>Recipients</th><th>Delivery Rate</th></tr>';
+                    campaigns.forEach(campaign => {
+                        table += `<tr><td>${campaign.name}</td><td>${new Date(campaign.date).toLocaleDateString()}</td><td>${campaign.recipients}</td><td>${campaign.delivery_rate}%</td></tr>`;
+                    });
+                    document.getElementById('sms-campaign-table').innerHTML = table;
+                } catch (error) {
+                    console.error('Failed to load SMS campaigns:', error);
+                }
+            }
+
+            fetchAnalytics();
+            fetchRecentActivity();
+            fetchEvents();
+            fetchContacts();
+            fetchLogs();
+            fetchCallLog();
+            fetchContactLists();
+            fetchEmailCampaigns();
+            fetchSmsCampaigns();
+
+            setInterval(() => {
+                fetchAnalytics();
+                fetchRecentActivity();
+                fetchEvents();
+                fetchCallLog();
+                fetchEmailCampaigns();
+                fetchSmsCampaigns();
+            }, 15000);
+        }
+
+        const darkModeToggle = document.createElement('button');
+        darkModeToggle.textContent = 'Toggle Dark Mode';
+        darkModeToggle.className = 'fixed top-4 right-4 bg-[#FFC107] text-[#2E7D32] px-4 py-2 rounded-lg font-semibold';
+        darkModeToggle.onclick = () => {
+            document.body.classList.toggle('dark-mode');
+            const primaryCircle = document.getElementById('primary-progress-circle');
+            const generalCircle = document.getElementById('general-progress-circle');
+            const color = document.body.classList.contains('dark-mode') ? '#FFC107' : '#2E7D32';
+            primaryCircle.setAttribute('stroke', color);
+            generalCircle.setAttribute('stroke', color);
+        };
+        document.body.appendChild(darkModeToggle);
+    </script>
+</body>
+</html>
