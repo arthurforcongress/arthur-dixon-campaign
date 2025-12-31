@@ -2095,22 +2095,71 @@
   </section>
 
   <footer>
-    <div class="socials">
-      <a href="https://twitter.com/arthurdixonca" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://instagram.com/arthurdixonca" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+  <div class="socials" aria-label="Social media links">
+    <!-- NOTE: If you're using Font Awesome, ensure its CSS is loaded sitewide -->
+    <a href="https://twitter.com/arthurdixonca" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+      <i class="fab fa-twitter" aria-hidden="true"></i>
+    </a>
+
+    <!-- Using what you pasted in JSON-LD -->
+    <a href="https://www.instagram.com/arthur4congress/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fab fa-instagram" aria-hidden="true"></i>
+    </a>
+
+    <!-- Replace if needed -->
+    <a href="https://facebook.com/arthur4congress" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <i class="fab fa-facebook" aria-hidden="true"></i>
+    </a>
+
+    <a href="https://tiktok.com/@arthur4congress" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <i class="fab fa-tiktok" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <div class="newsletter">
+    <form id="newsletter-form" action="https://formspree.io/f/myzwpwje" method="POST">
+      <label class="sr-only" for="newsletter-email">Email</label>
+      <input id="newsletter-email" type="email" name="email" placeholder="Join our newsletter" required>
+      <button type="submit" id="subscribe-btn">Subscribe</button>
+      <p id="newsletter-status" role="status" aria-live="polite" style="margin-top:10px;"></p>
+    </form>
+  </div>
+
+  <!-- Optional: X / Tweets section (embed) -->
+  <section id="x-feed" aria-label="Latest posts" style="margin-top:18px;">
+    <div class="x-feed-inner">
+      <h3 style="margin:0 0 10px 0;">Latest on X</h3>
+
+      <!-- Option A: Single profile timeline -->
+      <a
+        class="twitter-timeline"
+        data-height="420"
+        data-dnt="true"
+        data-theme="dark"
+        href="https://twitter.com/arthurdixonca"
+      >
+        Tweets by arthurdixonca
+      </a>
+
+      <!-- Option B: If you want a specific post embed instead, swap the above for:
+      <blockquote class="twitter-tweet">
+        <a href="https://twitter.com/arthurdixonca/status/YOUR_TWEET_ID"></a>
+      </blockquote>
+      -->
     </div>
-    <div class="newsletter">
-      <form action="https://formspree.io/f/myzwpwje">
-        <input type="email" name="email" placeholder="Join our newsletter" required>
-        <button type="submit" id="subscribe-btn">Subscribe</button>
-      </form>
-    </div>
-    <p id="footer-text">© 2025 Arthur Dixon for Congress | <a href="mailto:info@arthur2026.com">info@arthur2026.com</a> | <a href="mailto:info@arthurdixonforcongress.com">info@arthurdixonforcongress.com</a> | <a href="mailto:info@arthur4congress.com">info@arthur4congress.com</a></p>
-    <div class="disclaimer">
-      <p id="disclaimer-text">Paid for by Arthur Dixon for Congress</p>
-    </div>
-  </footer>
+  </section>
+
+  <p id="footer-text" style="margin-top:18px;">
+    © 2025 Arthur Dixon for Congress |
+    <a href="mailto:info@arthur2026.com">info@arthur2026.com</a> |
+    <a href="mailto:press@arthur2026.com">press@arthur2026.com</a> |
+    <a href="mailto:arthur@arthur2026.com">arthur@arthur2026.com</a>
+  </p>
+
+  <div class="disclaimer">
+    <p id="disclaimer-text">Paid for by Arthur Dixon for Congress</p>
+  </div>
+ </footer>
 
   <div class="floating-donate">
     <a href="#" class="btn" id="floating-donate-btn" onclick="window.open('https://secure.actblue.com/donate/arthur4congress', '_blank')">Donate</a>  </div>
