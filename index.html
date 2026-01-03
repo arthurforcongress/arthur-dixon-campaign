@@ -2948,100 +2948,132 @@
   }
 };
 
-function updateLanguage(lang) {
-  if (!translations[lang]) {
-    lang = 'en';
-  }
-  document.querySelector('#hero-title').innerHTML = translations[lang].heroTitle;
-  document.querySelector('#hero-subtitle').innerHTML = translations[lang].heroSubtitle;
-  document.querySelector('#hero-donate').textContent = translations[lang].donateButton;
-  document.querySelector('#about-title').textContent = translations[lang].aboutTitle;
-  document.querySelector('#about-text').textContent = translations[lang].aboutText;
-  document.querySelector('#vision-btn').textContent = translations[lang].visionBtn;
-  document.querySelector('#support-btn').textContent = translations[lang].supportBtn;
-  document.querySelector('#join-btn').textContent = translations[lang].joinBtn;
-  document.querySelector('#platform-title').textContent = translations[lang].platformTitle;
-  document.querySelector('#ubi-title').textContent = translations[lang].ubiTitle;
-  document.querySelector('#ubi-text').textContent = translations[lang].ubiText;
-  document.querySelector('#green-title').textContent = translations[lang].greenTitle;
-  document.querySelector('#green-text').textContent = translations[lang].greenText;
-  document.querySelector('#rent-title').textContent = translations[lang].rentTitle;
-  document.querySelector('#rent-text').textContent = translations[lang].rentText;
-  document.querySelector('#health-title').textContent = translations[lang].healthTitle;
-  document.querySelector('#health-text').textContent = translations[lang].healthText;
-  document.querySelector('#edu-title').textContent = translations[lang].eduTitle;
-  document.querySelector('#edu-text').textContent = translations[lang].eduText;
-  document.querySelector('#justice-title').textContent = translations[lang].justiceTitle;
-  document.querySelector('#justice-text').textContent = translations[lang].justiceText;
-  document.querySelector('#events-title').textContent = translations[lang].eventsTitle;
-  document.querySelector('#event1-title').textContent = translations[lang].event1Title;
-  document.querySelector('#event1-date').textContent = translations[lang].event1Date;
-  document.querySelector('#event2-title').textContent = translations[lang].event2Title;
-  document.querySelector('#event2-date').textContent = translations[lang].event2Date;
-  document.querySelector('#event3-title').textContent = translations[lang].event3Title;
-  document.querySelector('#event3-date').textContent = translations[lang].event3Date;
-  document.querySelector('#map-title').textContent = translations[lang].mapTitle;
-  document.querySelector('#district-title').textContent = translations[lang].districtTitle;
-  document.querySelector('#learn-more-btn').textContent = translations[lang].learnMoreBtn;
-  document.querySelector('#news-title').textContent = translations[lang].newsTitle;
-  document.querySelector('#tweets-title').textContent = translations[lang].tweetsTitle;
-  document.querySelector('#news1-date').textContent = translations[lang].news1Date;
-  document.querySelector('#news1-category').textContent = translations[lang].news1Category;
-  document.querySelector('#news1-title').textContent = translations[lang].news1Title;
-  document.querySelector('#news1-text').textContent = translations[lang].news1Text;
-  document.querySelector('#news1-read-more').textContent = translations[lang].news1ReadMore;
-  document.querySelector('#news2-date').textContent = translations[lang].news2Date;
-  document.querySelector('#news2-category').textContent = translations[lang].news2Category;
-  document.querySelector('#news2-title').textContent = translations[lang].news2Title;
-  document.querySelector('#news2-text').textContent = translations[lang].news2Text;
-  document.querySelector('#news2-read-more').textContent = translations[lang].news2ReadMore;
-  document.querySelector('#news3-date').textContent = translations[lang].news3Date;
-  document.querySelector('#news3-category').textContent = translations[lang].news3Category;
-  document.querySelector('#news3-title').textContent = translations[lang].news3Title;
-  document.querySelector('#news3-text').textContent = translations[lang].news3Text;
-  document.querySelector('#news3-read-more').textContent = translations[lang].news3ReadMore;
-  document.querySelector('#news4-date').textContent = translations[lang].news4Date;
-  document.querySelector('#news4-category').textContent = translations[lang].news4Category;
-  document.querySelector('#news4-title').textContent = translations[lang].news4Title;
-  document.querySelector('#news4-text').textContent = translations[lang].news4Text;
-  document.querySelector('#news4-read-more').textContent = translations[lang].news4ReadMore;
-  document.querySelector('#news5-date').textContent = translations[lang].news5Date;
-  document.querySelector('#news5-category').textContent = translations[lang].news5Category;
-  document.querySelector('#news5-title').textContent = translations[lang].news5Title;
-  document.querySelector('#news5-text').textContent = translations[lang].news5Text;
-  document.querySelector('#news5-read-more').textContent = translations[lang].news5ReadMore;
-  document.querySelector('#gallery-title').textContent = translations[lang].galleryTitle;
-  document.querySelector('#videos-title').textContent = translations[lang].videosTitle;
-  document.querySelector('#donate-title').textContent = translations[lang].donateTitle;
-  document.querySelector('#donate-text-h3').textContent = translations[lang].donateTextH3;
-  document.querySelector('#donate-text-p').textContent = translations[lang].donateTextP;
-  document.querySelector('#learn-more-donate').textContent = translations[lang].learnMoreDonate;
-  document.querySelector('#support-text').textContent = translations[lang].supportText;
-  document.querySelector('#shop-title').textContent = translations[lang].shopTitle;
-  document.querySelector('#shop-tshirt').textContent = translations[lang].shopTshirt;
-  document.querySelector('#shop-tshirt-price').textContent = translations[lang].shopTshirtPrice;
-  document.querySelector('#buy-tshirt').textContent = translations[lang].buyTshirt;
-  document.querySelector('#shop-hat').textContent = translations[lang].shopHat;
-  document.querySelector('#shop-hat-price').textContent = translations[lang].shopHatPrice;
-  document.querySelector('#buy-hat').textContent = translations[lang].buyHat;
-  document.querySelector('#shop-sticker').textContent = translations[lang].shopSticker;
-  document.querySelector('#shop-sticker-price').textContent = translations[lang].shopStickerPrice;
-  document.querySelector('#buy-sticker').textContent = translations[lang].buySticker;
-  document.querySelector('#shop-tote').textContent = translations[lang].shopTote;
-  document.querySelector('#shop-tote-price').textContent = translations[lang].shopTotePrice;
-  document.querySelector('#buy-tote').textContent = translations[lang].buyTote;
-  document.querySelector('#join-us-title').textContent = translations[lang].joinUsTitle;
-  document.querySelector('#join-form-title').textContent = translations[lang].joinFormTitle;
-  document.querySelector('#consent-label').textContent = translations[lang].consentLabel;
-  document.querySelector('#submit-btn').textContent = translations[lang].submitBtn;
-  document.querySelector('#subscribe-btn').textContent = translations[lang].subscribeBtn;
-  document.querySelector('#footer-text').textContent = translations[lang].footerText;
-  document.querySelector('#disclaimer-text').textContent = translations[lang].disclaimerText;
-  document.querySelector('#floating-donate-btn').textContent = translations[lang].floatingDonateBtn;
-  document.querySelector('#chatbot-text').textContent = translations[lang].chatbotText;
-  document.querySelector('#chatbot-contact').textContent = translations[lang].chatbotContact;
-  document.querySelector('#chatbot-close').textContent = translations[lang].chatbotClose;
+function setText(id, value) {
+  const el = document.querySelector(id);
+  if (el) el.textContent = value;
 }
+
+function setHTML(id, value) {
+  const el = document.querySelector(id);
+  if (el) el.innerHTML = value;
+}
+
+function updateLanguage(lang) {
+  if (!translations[lang]) lang = "en";
+
+  // HTML-enabled fields
+  setHTML("#hero-title", translations[lang].heroTitle);
+  setHTML("#hero-subtitle", translations[lang].heroSubtitle);
+
+  // Plain text fields
+  setText("#hero-donate", translations[lang].donateButton);
+  setText("#about-title", translations[lang].aboutTitle);
+  setText("#about-text", translations[lang].aboutText);
+
+  setText("#vision-btn", translations[lang].visionBtn);
+  setText("#support-btn", translations[lang].supportBtn);
+  setText("#join-btn", translations[lang].joinBtn);
+
+  setText("#platform-title", translations[lang].platformTitle);
+  setText("#ubi-title", translations[lang].ubiTitle);
+  setText("#ubi-text", translations[lang].ubiText);
+  setText("#green-title", translations[lang].greenTitle);
+  setText("#green-text", translations[lang].greenText);
+  setText("#rent-title", translations[lang].rentTitle);
+  setText("#rent-text", translations[lang].rentText);
+  setText("#health-title", translations[lang].healthTitle);
+  setText("#health-text", translations[lang].healthText);
+  setText("#edu-title", translations[lang].eduTitle);
+  setText("#edu-text", translations[lang].eduText);
+  setText("#justice-title", translations[lang].justiceTitle);
+  setText("#justice-text", translations[lang].justiceText);
+
+  setText("#events-title", translations[lang].eventsTitle);
+  setText("#event1-title", translations[lang].event1Title);
+  setText("#event1-date", translations[lang].event1Date);
+  setText("#event2-title", translations[lang].event2Title);
+  setText("#event2-date", translations[lang].event2Date);
+  setText("#event3-title", translations[lang].event3Title);
+  setText("#event3-date", translations[lang].event3Date);
+
+  setText("#map-title", translations[lang].mapTitle);
+  setText("#district-title", translations[lang].districtTitle);
+  setText("#learn-more-btn", translations[lang].learnMoreBtn);
+
+  setText("#news-title", translations[lang].newsTitle);
+  setText("#tweets-title", translations[lang].tweetsTitle);
+
+  setText("#news1-date", translations[lang].news1Date);
+  setText("#news1-category", translations[lang].news1Category);
+  setText("#news1-title", translations[lang].news1Title);
+  setText("#news1-text", translations[lang].news1Text);
+  setText("#news1-read-more", translations[lang].news1ReadMore);
+
+  setText("#news2-date", translations[lang].news2Date);
+  setText("#news2-category", translations[lang].news2Category);
+  setText("#news2-title", translations[lang].news2Title);
+  setText("#news2-text", translations[lang].news2Text);
+  setText("#news2-read-more", translations[lang].news2ReadMore);
+
+  setText("#news3-date", translations[lang].news3Date);
+  setText("#news3-category", translations[lang].news3Category);
+  setText("#news3-title", translations[lang].news3Title);
+  setText("#news3-text", translations[lang].news3Text);
+  setText("#news3-read-more", translations[lang].news3ReadMore);
+
+  setText("#news4-date", translations[lang].news4Date);
+  setText("#news4-category", translations[lang].news4Category);
+  setText("#news4-title", translations[lang].news4Title);
+  setText("#news4-text", translations[lang].news4Text);
+  setText("#news4-read-more", translations[lang].news4ReadMore);
+
+  setText("#news5-date", translations[lang].news5Date);
+  setText("#news5-category", translations[lang].news5Category);
+  setText("#news5-title", translations[lang].news5Title);
+  setText("#news5-text", translations[lang].news5Text);
+  setText("#news5-read-more", translations[lang].news5ReadMore);
+
+  setText("#gallery-title", translations[lang].galleryTitle);
+  setText("#videos-title", translations[lang].videosTitle);
+
+  setText("#donate-title", translations[lang].donateTitle);
+  setText("#donate-text-h3", translations[lang].donateTextH3);
+  setText("#donate-text-p", translations[lang].donateTextP);
+  setText("#learn-more-donate", translations[lang].learnMoreDonate);
+  setText("#support-text", translations[lang].supportText);
+
+  setText("#shop-title", translations[lang].shopTitle);
+  setText("#shop-tshirt", translations[lang].shopTshirt);
+  setText("#shop-tshirt-price", translations[lang].shopTshirtPrice);
+  setText("#buy-tshirt", translations[lang].buyTshirt);
+
+  setText("#shop-hat", translations[lang].shopHat);
+  setText("#shop-hat-price", translations[lang].shopHatPrice);
+  setText("#buy-hat", translations[lang].buyHat);
+
+  setText("#shop-sticker", translations[lang].shopSticker);
+  setText("#shop-sticker-price", translations[lang].shopStickerPrice);
+  setText("#buy-sticker", translations[lang].buySticker);
+
+  setText("#shop-tote", translations[lang].shopTote);
+  setText("#shop-tote-price", translations[lang].shopTotePrice);
+  setText("#buy-tote", translations[lang].buyTote);
+
+  setText("#join-us-title", translations[lang].joinUsTitle);
+  setText("#join-form-title", translations[lang].joinFormTitle);
+  setText("#consent-label", translations[lang].consentLabel);
+  setText("#submit-btn", translations[lang].submitBtn);
+  setText("#subscribe-btn", translations[lang].subscribeBtn);
+
+  setText("#footer-text", translations[lang].footerText);
+  setText("#disclaimer-text", translations[lang].disclaimerText);
+
+  setText("#floating-donate-btn", translations[lang].floatingDonateBtn);
+  setText("#chatbot-text", translations[lang].chatbotText);
+  setText("#chatbot-contact", translations[lang].chatbotContact);
+  setText("#chatbot-close", translations[lang].chatbotClose);
+}
+
 
 const languageToggle = document.querySelector('#language-toggle');
 languageToggle.addEventListener('change', (e) => {
