@@ -2398,8 +2398,7 @@
       }
     });
 
-
-    const translations = {
+const translations = {
   en: {
     heroTitle: "The People’s Campaign for <span style='color: #FFD700;'>Bold Progressive Change</span>",
     heroSubtitle: "Join Arthur Dixon’s <span style='color: #FFD700;'>Grassroots Movement</span> for a better <span style='color: #FFD700;'>Los Angeles</span>",
@@ -2491,6 +2490,7 @@
     chatbotContact: "Get in Touch",
     chatbotClose: "Close"
   },
+
   es: {
     heroTitle: "La Campaña del Pueblo para un <span style='color: #FFD700;'>Cambio Progresista Audaz</span>",
     heroSubtitle: "Únete al <span style='color: #FFD700;'>Movimiento de Base</span> de Arthur Dixon por un mejor <span style='color: #FFD700;'>Los Ángeles</span>",
@@ -2582,6 +2582,7 @@
     chatbotContact: "Ponerse en Contacto",
     chatbotClose: "Cerrar"
   },
+
   ko: {
     heroTitle: "대담한 진보적 변화를 위한 <span style='color: #FFD700;'>인민 캠페인</span>",
     heroSubtitle: "Arthur Dixon의 <span style='color: #FFD700;'>풀뿌리 운동</span>에 참여하여 더 나은 <span style='color: #FFD700;'>로스앤젤레스</span>를 만들어 보세요",
@@ -2673,6 +2674,7 @@
     chatbotContact: "연락하기",
     chatbotClose: "닫기"
   },
+
   zh: {
     heroTitle: "为<span style='color: #FFD700;'>大胆的进步变革</span>而设的人民运动",
     heroSubtitle: "加入Arthur Dixon的<span style='color: #FFD700;'>基层运动</span>，共同打造更好的<span style='color: #FFD700;'>洛杉矶</span>",
@@ -2764,6 +2766,7 @@
     chatbotContact: "联系我们",
     chatbotClose: "关闭"
   },
+
   ja: {
     heroTitle: "<span style='color: #FFD700;'>大胆な進歩的変化</span>のための人民キャンペーン",
     heroSubtitle: "Arthur Dixonの<span style='color: #FFD700;'>草の根運動</span>に参加して、より良い<span style='color: #FFD700;'>ロサンゼルス</span>を",
@@ -2855,6 +2858,7 @@
     chatbotContact: "連絡を取る",
     chatbotClose: "閉じる"
   },
+
   tl: {
     heroTitle: "Ang Kampanya ng Tao para sa <span style='color: #FFD700;'>Matapang na Progresibong Pagbabago</span>",
     heroSubtitle: "Sumali sa <span style='color: #FFD700;'>Paghihikayat sa Grassroots</span> ni Arthur Dixon para sa mas magandang <span style='color: #FFD700;'>Los Angeles</span>",
@@ -3073,6 +3077,19 @@ function updateLanguage(lang) {
   setText("#chatbot-contact", translations[lang].chatbotContact);
   setText("#chatbot-close", translations[lang].chatbotClose);
 }
+
+const languageToggle = document.querySelector("#language-toggle");
+
+languageToggle.addEventListener("change", (e) => {
+  const lang = e.target.value;
+  document.documentElement.lang = lang;
+  updateLanguage(lang);
+});
+
+// Apply current dropdown language immediately on load (so the page fully switches without needing a change event)
+document.documentElement.lang = languageToggle?.value || "en";
+updateLanguage(languageToggle?.value || "en");
+```
 
 
 const languageToggle = document.querySelector('#language-toggle');
