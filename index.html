@@ -3089,8 +3089,6 @@ languageToggle.addEventListener("change", (e) => {
 // Apply current dropdown language immediately on load (so the page fully switches without needing a change event)
 document.documentElement.lang = languageToggle?.value || "en";
 updateLanguage(languageToggle?.value || "en");
-```
-
 
 const languageToggle = document.querySelector('#language-toggle');
 languageToggle.addEventListener('change', (e) => {
